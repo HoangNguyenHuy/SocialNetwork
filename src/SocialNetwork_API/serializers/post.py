@@ -9,7 +9,7 @@ class PostSerializer(ServiceSerializer):
 
     def create(self, validated_data):
         try:
-            post = Posts.objects.create(validated_data)
+            post = Posts.objects.create(**validated_data)
             post.save()
             return post
 

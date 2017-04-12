@@ -13,16 +13,33 @@ class const(object):
         self.__dict__[name] = value
 
 class StatusType(const):
-    Public=1
-    Private=2
-    Friend=3
-    Custom=4
+    PUBLIC=1
+    PRIVATE=2
+    FRIEND=3
+    CUSTOM=4
 
-    # @classmethod
-    # def is_valid_type(cls, status_type):
-    #     return status_type in [
-    #         cls.Public,
-    #         cls.Private,
-    #         cls.Friend,
-    #         cls.Custom
-    #     ]
+class UserType(const):
+    USER = 1
+    SUPERUSER = 2
+
+    @classmethod
+    def is_manager(cls, user_type):
+        return user_type == cls.SUPERUSER
+
+    @classmethod
+    def is_valid_type(cls, user_type):
+        return user_type in [
+            cls.USER,
+            cls.SUPERUSER
+        ]
+
+class SexType(const):
+    MAN = 1
+    WOMAN= 2
+    UNKNOWN=3
+
+
+# USER_TYPE_CHOICES = [
+#     (UserType.USER, 'User'),
+#     (UserType.SUPERUSER, 'Superuser'),
+# ]

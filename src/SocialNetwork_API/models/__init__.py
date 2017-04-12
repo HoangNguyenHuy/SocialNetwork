@@ -7,3 +7,4 @@ from SocialNetwork_API.models.downloads import Download
 from SocialNetwork_API.models.friends import Friend
 from SocialNetwork_API.models.members import Member
 from SocialNetwork_API.models.tags import Tags
+from SocialNetwork_API.models.user import User

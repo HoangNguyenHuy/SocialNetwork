@@ -5,7 +5,7 @@ from rest_framework import serializers
 class PostSerializer(ServiceSerializer):
     user_id = serializers.IntegerField(required=True)
     content = serializers.CharField(required=True)
-    status = serializers.CharField(required=False)    #sửa lại kiểu dữ liệu bên model từ char thành int
+    status = serializers.IntegerField(required=False)
 
     def create(self, validated_data):
         try:
@@ -22,4 +22,4 @@ class PostSerializer(ServiceSerializer):
 
     class Meta:
         model = Posts
-        fields = ['id', 'user_id', 'content']
+        fields = ['id', 'user_id', 'content', 'status']

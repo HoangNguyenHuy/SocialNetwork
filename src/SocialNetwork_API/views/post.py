@@ -21,7 +21,7 @@ class PostViewSet(BaseViewSet):
 
     def retrieve(self, request, pk=None):
         try:
-            queryset = Posts.objects.all().filter(user=self.request.user)
+            queryset = Posts.objects.all().filter(user_id=self.request.user.user_id)## sai
             post = get_object_or_404(queryset, pk=pk)
             serializer = self.serializer_class(post)
             return Response(serializer.data)
@@ -50,7 +50,6 @@ class PostViewSet(BaseViewSet):
 
     def create(self, request):
         try:
-            # data = request.data
             serializer = PostSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             post = serializer.save()

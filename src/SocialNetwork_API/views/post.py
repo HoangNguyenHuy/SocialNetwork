@@ -1,9 +1,10 @@
 from rest_framework.generics import get_object_or_404
+from rest_framework import exceptions,status
+from rest_framework.response import Response
 
 from SocialNetwork_API.serializers.post import PostSerializer
+from SocialNetwork_API.services import PostService
 from SocialNetwork_API.views import BaseViewSet
-from rest_framework.response import Response
-from rest_framework import status
 from SocialNetwork_API.models import *
 
 class PostViewSet(BaseViewSet):
@@ -19,34 +20,52 @@ class PostViewSet(BaseViewSet):
         except Exception as exception:
             raise exception
 
-    def retrieve(self, request, pk=None):
+
+    def retrieve(self, request, pk=None, **kwargs):
         try:
-            queryset = Posts.objects.all().filter(user_id=self.request.user.user_id)## sai
-            post = get_object_or_404(queryset, pk=pk)
-            serializer = self.serializer_class(post)
+            post = self.get_and_check(pk)
+            # queryset = Posts.objects.all().filter(user_id=pk)
+            # post = get_object_or_404(post, pk=pk)
+            serializer = PostSerializer(post)
+
             return Response(serializer.data)
 
         except Exception as exception:
             raise exception
 
-    def update(self, request, pk):
+
+    def update(self, request, pk=None, *args, **kwargs):
         try:
-            post = get_object_or_404(Posts.objects.all(), pk=pk)
-            serializer = self.serializer_class(post, data=request.data)
+            post = self.get_and_check(pk)
+            if post.user_id != 1:
+                raise exceptions.PermissionDenied()
+
+            # post = get_object_or_404(Posts.objects.all(), pk=pk)
+
+            data = self.take_data_from_request(request, post)
+
+            serializer = self.serializer_class(instance=post, data=data)
             serializer.is_valid(raise_exception=True)
-            serializer.save()
+            # serializer.save(content=request.data['content'],) # loi ko update du lieu
+
+            serializer.save(content=serializer.validated_data['content'])
+
             return Response(serializer.data)
+
         except Exception as exc:
             raise exc
+
 
     def destroy(self, request, pk=None):
         try:
             post = Posts.objects.all().filter(pk=pk)
             post.delete()
+
             return Response(status=status.HTTP_204_NO_CONTENT)
 
         except Exception as exc:
             return exc
+
 
     def create(self, request):
         try:
@@ -56,8 +75,29 @@ class PostViewSet(BaseViewSet):
             post_data = post.__dict__
             if '_state' in post_data:
                 del post_data['_state']
+
             return Response(post_data, status=status.HTTP_200_OK)
 
         except Exception as exception:
             raise exception
 
+
+    @classmethod
+    def get_and_check(self, pk):
+        post = PostService.get_post(pk)
+        if not post:
+            raise exceptions.NotFound()
+
+        return post
+
+
+    @classmethod
+    def take_data_from_request(cls, request, post=None):
+
+        data = request.data.copy()
+        if post:
+            data['user_id'] = 1
+            if 'status' not in data:
+                data['status'] = post.status
+
+        return data

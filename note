@@ -3,11 +3,12 @@ them vao bao cao table user field email
 sua table user gom first name(lenght 30) va last name(lenght 30)
 hoi a ve cai model user filed DOB config nhu the nao
 hoi a ve cai model sao migrate ko ra het all field
-lam retreve
 cai phpmyadmin quan ly mysql
+tao auth-user, login,logout, token
 
 
 **********đang thực hiện
-lam retreve
+tao update post
 
 **********đã hoàn thành
+lam retreve ( cần update lại)

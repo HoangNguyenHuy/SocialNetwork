@@ -1,8 +1,8 @@
-from rest_framework.generics import get_object_or_404
 from rest_framework import exceptions,status
 from rest_framework.response import Response
 
-from SocialNetwork_API.serializers.post import PostSerializer
+from SocialNetwork_API.exceptions import ServiceException
+from SocialNetwork_API.serializers import PostSerializer
 from SocialNetwork_API.services import PostService
 from SocialNetwork_API.views import BaseViewSet
 from SocialNetwork_API.models import *
@@ -56,9 +56,11 @@ class PostViewSet(BaseViewSet):
             raise exc
 
 
-    def destroy(self, request, pk=None):
+    def destroy(self, request, pk=None, *args, **kwargs):
         try:
-            post = Posts.objects.all().filter(pk=pk)
+            post = self.get_and_check(pk)
+            if post.user_id != 1:
+                raise exceptions.PermissionDenied()
             post.delete()
 
             return Response(status=status.HTTP_204_NO_CONTENT)
@@ -67,8 +69,23 @@ class PostViewSet(BaseViewSet):
             return exc
 
 
-    def create(self, request):
+    def delete(self, request, pk=None, *args, **kwargs):
         try:
+            post_id = int(pk)
+            post = self.get_and_check(post_id)
+            if post.user_id != request.user.id:
+                raise exceptions.PermissionDenied()
+
+            PostService.delete_comment(request.user, post)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except Exception as exception:
+            raise ServiceException(exception)
+
+
+    def create(self, request, *args, **kwargs):
+        try:
+            data = self.take_data_from_request(request)
             serializer = PostSerializer(data=request.data)
             serializer.is_valid(raise_exception=True)
             post = serializer.save()
@@ -96,7 +113,7 @@ class PostViewSet(BaseViewSet):
 
         data = request.data.copy()
         if post:
-            data['user_id'] = 1
+            data['user_id'] = request.user.id
             if 'status' not in data:
                 data['status'] = post.status
 

@@ -31,3 +31,6 @@ class ClientSerializer(serializers.Serializer):
     created_at = serializers.ReadOnlyField()
     updated_at = serializers.ReadOnlyField()
 
+
+from SocialNetwork_API.serializers.post import PostSerializer
+from SocialNetwork_API.serializers.comment import CommentSerializer

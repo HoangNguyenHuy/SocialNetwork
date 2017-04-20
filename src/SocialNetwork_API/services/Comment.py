@@ -13,8 +13,21 @@ class CommentService(BaseService):
         try:
             with transaction.atomic():
                 comment = Comment.objects.create(**comment_data)
+
                 return comment
+
         except Exception as exception:
             cls.log_exception(exception)
             raise exception
 
+    @classmethod
+    def get_comment(cls, post_id):
+        try:
+            queryset = Comment.objects.all()
+            comment = get_object_or_404(queryset, pk=post_id)
+
+            return comment
+
+        except Exception as exception:
+            # cls.log_exception(exception)  # cái này là cái gì
+            return None

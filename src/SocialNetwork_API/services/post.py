@@ -22,10 +22,16 @@ class PostService(BaseService):
 
 
     @classmethod
-    def save(cls, post_data):
+    def save(cls, post_data, instance=None):
         try:
+            post = instance if instance else Posts()
+
+            for key in post_data:
+                setattr(post, key, post_data[key])
+
             with transaction.atomic():
-                post = Posts.objects.create(**post_data)
+                post.save()
+
                 return post
         except Exception as exception:
             cls.log_exception(exception)

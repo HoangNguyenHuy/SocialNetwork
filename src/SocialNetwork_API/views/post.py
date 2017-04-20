@@ -40,14 +40,10 @@ class PostViewSet(BaseViewSet):
             if post.user_id != 1:
                 raise exceptions.PermissionDenied()
 
-            # post = get_object_or_404(Posts.objects.all(), pk=pk)
-
             data = self.take_data_from_request(request, post)
 
             serializer = self.serializer_class(instance=post, data=data)
             serializer.is_valid(raise_exception=True)
-            # serializer.save(content=request.data['content'],) # loi ko update du lieu
-
             serializer.save(content=serializer.validated_data['content'])
 
             return Response(serializer.data)
@@ -86,7 +82,7 @@ class PostViewSet(BaseViewSet):
     def create(self, request, *args, **kwargs):
         try:
             data = self.take_data_from_request(request)
-            serializer = PostSerializer(data=request.data)
+            serializer = PostSerializer(data=data)
             serializer.is_valid(raise_exception=True)
             post = serializer.save()
             post_data = post.__dict__
@@ -113,7 +109,7 @@ class PostViewSet(BaseViewSet):
 
         data = request.data.copy()
         if post:
-            data['user_id'] = request.user.id
+            data['user_id'] = post.user_id
             if 'status' not in data:
                 data['status'] = post.status
 

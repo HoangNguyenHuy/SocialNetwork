@@ -33,6 +33,7 @@ class PostService(BaseService):
                 post.save()
 
                 return post
+
         except Exception as exception:
             cls.log_exception(exception)
             raise exception

@@ -9,10 +9,15 @@ from SocialNetwork_API.services.base import BaseService
 class CommentService(BaseService):
 
     @classmethod
-    def save(cls, comment_data):
+    def save(cls, comment_data, instance=None):
         try:
+            comment = instance if instance else Comment()
+
+            for key in comment_data:
+                setattr(comment, key, comment_data[key])
+
             with transaction.atomic():
-                comment = Comment.objects.create(**comment_data)
+                comment.save()
 
                 return comment
 

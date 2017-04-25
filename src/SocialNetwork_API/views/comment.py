@@ -4,7 +4,7 @@ from rest_framework import status
 
 from SocialNetwork_API.serializers import CommentSerializer
 from SocialNetwork_API.views import BaseViewSet
-from SocialNetwork_API.services import CommentService
+from SocialNetwork_API.services import CommentService,PostService
 from SocialNetwork_API.exceptions import ServiceException
 
 
@@ -14,11 +14,8 @@ class CommentViewSet(BaseViewSet):
 
     def create(self, request, *args, **kwargs):
         try:
-            # take data from request
-            # data = self.take_data_from_request(request)
-
-            # validate data
-            serializer = self.serializer_class(data=request.data)
+            data = self.take_data_from_request(request)
+            serializer = self.serializer_class(data=data)
             serializer.is_valid(raise_exception=True)
 
             # save data
@@ -44,9 +41,8 @@ class CommentViewSet(BaseViewSet):
 
             serializer = self.serializer_class(instance=comment, data=data)
             serializer.is_valid(raise_exception=True)
-            # serializer.save(content=request.data['content'],) # loi ko update du lieu
 
-            serializer.save(content=serializer.validated_data['content'])
+            serializer.save(content=serializer.validated_data['comment']) # hoi a hao cai nay cai gi
 
             return Response(serializer.data)
 
@@ -56,19 +52,26 @@ class CommentViewSet(BaseViewSet):
 
     @classmethod
     def get_and_check(self, pk):
-        post = CommentService.get_comment(pk)
-        if not post:
+        object = CommentService.get_comment(pk)
+
+        if not object:
             raise exceptions.NotFound()
 
-        return post
+        return object
 
     @classmethod
-    def take_data_from_request(cls, request, post=None):
+    def take_data_from_request(cls, request, comment=None):
 
         data = request.data.copy()
-        if post:
-            data['user_id'] = request.user.id
-            if 'status' not in data:
-                data['status'] = post.status
+
+        if not data:
+            raise exceptions.APIException('update must be implemented.')
+
+        if comment:
+            data['post_id'] = comment.post_id
+            if 'reply_to_comment_id' in data:
+                del data['reply_to_comment_id']
+
+        data['user_id'] = 1#request.user.id
 
         return data

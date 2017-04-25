@@ -2,7 +2,6 @@
 from rest_framework import serializers
 from rest_framework import exceptions
 
-
 from SocialNetwork_API.models import Comment,Posts
 from SocialNetwork_API.serializers import ServiceSerializer
 from SocialNetwork_API.services import CommentService
@@ -16,11 +15,11 @@ class CommentSerializer(ServiceSerializer):
     def validate(self, data):
         # validate required fields
         self.validate_required_fields(data)
-
         # validate reply_to_comment_id
         self.validate_comment_id(data)
 
         return data
+
 
     @classmethod
     def validate_comment_id(cls, data):
@@ -37,17 +36,21 @@ class CommentSerializer(ServiceSerializer):
         if 'post_id' not in data:
             raise exceptions.APIException('post_id is required.')
 
-        post = Posts.objects.get(pk=data['post_id'])
+        post = Posts.objects.all().filter(pk=data['post_id'])
         if not post:
             raise exceptions.APIException('post_id does not exist.')
 
         if 'comment' not in data :
-            raise exceptions.APIException('comment must include text or image.')
+            raise exceptions.APIException('comment is required.')
 
 
     def create(self, validated_data):
         return CommentService.save(validated_data)
 
+
+    def update(self, instance, validated_data):
+        return CommentService.save(validated_data, instance)
+
     class Meta:
         model = Comment
-        fields = ['id', 'user_id', 'post_id', 'comment', 'reply_to_comment_id']
+        fields = ['id', 'user_id', 'post_id', 'comment', 'reply_to_comment_id' ]

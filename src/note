@@ -15,5 +15,7 @@ method create post ( cần update lại)
 method retreve post ( cần update lại)
 method delete post (thêm delete theo arango, tại sao not found ko hiển thị đc như not found của update)
 method list post
-tao method create comment
 tao method update post
+
+tao method create comment
+coi lai method create comment khi nhap post_id ko dung se ntn

@@ -108,9 +108,16 @@ class PostViewSet(BaseViewSet):
     def take_data_from_request(cls, request, post=None):
 
         data = request.data.copy()
+
+        if not data:
+            raise exceptions.APIException('update must be implemented.')
+
         if post:
             data['user_id'] = post.user_id
             if 'status' not in data:
                 data['status'] = post.status
+
+            if 'content' not in data:
+                data['content'] = post.content
 
         return data

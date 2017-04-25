@@ -20,7 +20,6 @@ class PostViewSet(BaseViewSet):
         except Exception as exception:
             raise exception
 
-
     def retrieve(self, request, pk=None, **kwargs):
         try:
             post = self.get_and_check(pk)
@@ -32,7 +31,6 @@ class PostViewSet(BaseViewSet):
 
         except Exception as exception:
             raise exception
-
 
     def update(self, request, pk=None, *args, **kwargs):
         try:
@@ -51,7 +49,6 @@ class PostViewSet(BaseViewSet):
         except Exception as exc:
             raise exc
 
-
     def destroy(self, request, pk=None, *args, **kwargs):
         try:
             post = self.get_and_check(pk)
@@ -63,7 +60,6 @@ class PostViewSet(BaseViewSet):
 
         except Exception as exc:
             return exc
-
 
     def delete(self, request, pk=None, *args, **kwargs):
         try:
@@ -77,7 +73,6 @@ class PostViewSet(BaseViewSet):
 
         except Exception as exception:
             raise ServiceException(exception)
-
 
     def create(self, request, *args, **kwargs):
         try:
@@ -94,7 +89,6 @@ class PostViewSet(BaseViewSet):
         except Exception as exception:
             raise exception
 
-
     @classmethod
     def get_and_check(self, pk):
         post = PostService.get_post(pk)
@@ -102,7 +96,6 @@ class PostViewSet(BaseViewSet):
             raise exceptions.NotFound()
 
         return post
-
 
     @classmethod
     def take_data_from_request(cls, request, post=None):

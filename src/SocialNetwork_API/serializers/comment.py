@@ -20,7 +20,6 @@ class CommentSerializer(ServiceSerializer):
 
         return data
 
-
     @classmethod
     def validate_comment_id(cls, data):
         try:
@@ -43,10 +42,8 @@ class CommentSerializer(ServiceSerializer):
         if 'comment' not in data :
             raise exceptions.APIException('comment is required.')
 
-
     def create(self, validated_data):
         return CommentService.save(validated_data)
-
 
     def update(self, instance, validated_data):
         return CommentService.save(validated_data, instance)

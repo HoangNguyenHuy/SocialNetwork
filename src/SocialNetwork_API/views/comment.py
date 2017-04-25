@@ -30,7 +30,6 @@ class CommentViewSet(BaseViewSet):
         except Exception as exception:
             raise ServiceException(exception)
 
-
     def update(self, request, pk=None, *args, **kwargs):
         try:
             comment = self.get_and_check(pk)
@@ -49,7 +48,6 @@ class CommentViewSet(BaseViewSet):
         except Exception as exc:
             raise exc
 
-
     @classmethod
     def get_and_check(self, pk):
         object = CommentService.get_comment(pk)
@@ -64,7 +62,7 @@ class CommentViewSet(BaseViewSet):
 
         data = request.data.copy()
 
-        if not data:
+        if data['comment'] == comment.comment:
             raise exceptions.APIException('update must be implemented.')
 
         if comment:

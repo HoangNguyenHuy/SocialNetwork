@@ -48,6 +48,19 @@ class CommentViewSet(BaseViewSet):
         except Exception as exc:
             raise exc
 
+    def destroy(self, request, pk=None, *args, **kwargs):
+        try:
+            comment = self.get_and_check(pk)
+            if comment.user_id != 1:
+                raise exceptions.PermissionDenied()
+
+            comment.delete()
+
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except Exception as exc:
+            return exc
+
     @classmethod
     def get_and_check(self, pk):
         object = CommentService.get_comment(pk)

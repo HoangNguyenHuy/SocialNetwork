@@ -15,26 +15,42 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="note" pinned="false" current-in-tab="false">
+      <file leaf-file-name="note" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/note">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="285">
+              <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comment.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SocialNetwork_API/views/comment.py">
+      <file leaf-file-name="post.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialNetwork_API/views/post.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="203">
-              <caret line="64" column="32" lean-forward="false" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="32" />
+            <state relative-caret-position="112">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding>
-                <element signature="e#510#1032#0" expanded="false" />
-                <element signature="e#1099#1638#0" expanded="false" />
-                <element signature="e#2055#2181#0" expanded="false" />
-                <element signature="e#2269#2643#0" expanded="false" />
+                <element signature="e#0#44#0" expanded="true" />
+                <element signature="e#477#698#0" expanded="false" />
+                <element signature="e#760#1082#0" expanded="false" />
+                <element signature="e#2110#2500#0" expanded="false" />
+                <element signature="e#2558#3011#0" expanded="false" />
+                <element signature="e#3269#3640#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="post.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/SocialNetwork_API/services/post.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+              <folding>
+                <element signature="e#278#606#0" expanded="false" />
+                <element signature="e#679#1028#0" expanded="false" />
+                <element signature="e#2224#2238#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -87,12 +103,12 @@
         <option value="$PROJECT_DIR$/SocialNetwork_API/serializers/__init__.py" />
         <option value="$PROJECT_DIR$/SocialNetwork_API/serializers/post.py" />
         <option value="$PROJECT_DIR$/SocialNetwork_API/services/Comment.py" />
-        <option value="$PROJECT_DIR$/SocialNetwork_API/services/post.py" />
         <option value="$PROJECT_DIR$/SocialNetwork_API/models/posts.py" />
         <option value="$PROJECT_DIR$/SocialNetwork_API/serializers/comment.py" />
+        <option value="$PROJECT_DIR$/SocialNetwork_API/views/comment.py" />
+        <option value="$PROJECT_DIR$/SocialNetwork_API/services/post.py" />
         <option value="$PROJECT_DIR$/SocialNetwork_API/views/post.py" />
         <option value="$PROJECT_DIR$/note" />
-        <option value="$PROJECT_DIR$/SocialNetwork_API/views/comment.py" />
       </list>
     </option>
   </component>
@@ -140,6 +156,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="SocialNetwork_API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SocialNetwork_API" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -363,20 +397,30 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SocialNetwork_API/views/post.py</url>
-          <line>65</line>
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/SocialNetwork_API/views/comment.py</url>
           <line>52</line>
           <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SocialNetwork_API/services/post.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SocialNetwork_API/views/post.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/SocialNetwork_API/views/post.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="93" />
+      <option name="time" value="97" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -509,14 +553,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/SocialNetwork_API/models/users.py" />
-    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/-1681195361/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="2806" column="8" lean-forward="false" selection-start-line="2806" selection-start-column="8" selection-end-line="2806" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../python-projects/env/lib/python3.5/site-packages/django/core/mail/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -692,44 +728,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SocialNetwork_API/services/post.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-          <folding>
-            <element signature="e#278#606#0" expanded="false" />
-            <element signature="e#679#1028#0" expanded="false" />
-            <element signature="e#2029#2215#0" expanded="false" />
-            <element signature="e#2309#2586#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SocialNetwork_API/views/post.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="63" column="56" lean-forward="false" selection-start-line="63" selection-start-column="56" selection-end-line="63" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-            <element signature="e#477#698#0" expanded="false" />
-            <element signature="e#760#1082#0" expanded="false" />
-            <element signature="e#1716#1995#0" expanded="false" />
-            <element signature="e#2062#2452#0" expanded="false" />
-            <element signature="e#2510#2963#0" expanded="false" />
-            <element signature="e#3023#3136#0" expanded="false" />
-            <element signature="e#3221#3592#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/note">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SocialNetwork_API/services/Comment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
@@ -748,14 +746,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SocialNetwork_API/views/comment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="64" column="32" lean-forward="false" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="32" />
+        <state relative-caret-position="180">
+          <caret line="51" column="12" lean-forward="false" selection-start-line="51" selection-start-column="12" selection-end-line="51" selection-end-column="12" />
           <folding>
             <element signature="e#510#1032#0" expanded="false" />
             <element signature="e#1099#1638#0" expanded="false" />
+            <element signature="e#1723#1938#0" expanded="false" />
             <element signature="e#2055#2181#0" expanded="false" />
             <element signature="e#2269#2643#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2016.3/system/python_stubs/-1681195361/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="3562" column="8" lean-forward="false" selection-start-line="3562" selection-start-column="8" selection-end-line="3562" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialNetwork_API/services/post.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding>
+            <element signature="e#278#606#0" expanded="false" />
+            <element signature="e#679#1028#0" expanded="false" />
+            <element signature="e#2224#2238#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SocialNetwork_API/views/post.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+            <element signature="e#477#698#0" expanded="false" />
+            <element signature="e#760#1082#0" expanded="false" />
+            <element signature="e#2110#2500#0" expanded="false" />
+            <element signature="e#2558#3011#0" expanded="false" />
+            <element signature="e#3269#3640#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/note">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

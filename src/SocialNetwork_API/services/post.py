@@ -69,17 +69,17 @@ class PostService(BaseService):
     def get_all_comments_of_post(cls, root_post_id):
         comments = Comment.objects.filter(post_id=root_post_id)
         parent_comments = list(comments)
-        cls.get_child_comments(parent_comments, comments)
+        # cls.get_child_comments(parent_comments, comments)
 
         return parent_comments
 
 
-    @classmethod
-    def get_child_comments(cls, parent_comments, child_comments):
-        for comment in child_comments:
-            comments = Comment.objects.filter(post_id=comment.id)
-            if len(comments) > 0:
-                parent_comments.extend(comments)
-                cls.get_child_comments(parent_comments, comments)
-
-        return parent_comments
+    # @classmethod
+    # def get_child_comments(cls, parent_comments, child_comments):
+    #     for comment in child_comments:
+    #         comments = Comment.objects.filter(post_id=comment.id)
+    #         if len(comments) > 0:
+    #             parent_comments.extend(comments)
+    #             cls.get_child_comments(parent_comments, comments)
+    #
+    #     return parent_comments

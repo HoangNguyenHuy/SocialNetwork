@@ -54,6 +54,7 @@ class PostViewSet(BaseViewSet):
             post = self.get_and_check(pk)
             if post.user_id != 1:
                 raise exceptions.PermissionDenied()
+            PostService.delete_comment(1, post)
             post.delete()
 
             return Response(status=status.HTTP_204_NO_CONTENT)

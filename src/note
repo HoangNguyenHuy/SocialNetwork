@@ -8,7 +8,7 @@ tao auth-user, login,logout, token
 
 
 **********đang thực hiện
-update delete post(xóa tất cả các comment kèm theo)
+
 
 **********đã hoàn thành
 method create post ( cần update lại)
@@ -16,6 +16,7 @@ method retreve post ( cần update lại)
 method delete post (thêm delete theo arango, tại sao not found ko hiển thị đc như not found của update)
 method list post
 tao method update post
+update delete post(xóa tất cả các comment kèm theo)
 
 tao method create comment
 coi lai method create comment khi nhap post_id ko dung se ntn

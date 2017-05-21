@@ -38,6 +38,23 @@ class SexType(const):
     WOMAN= 2
     UNKNOWN=3
 
+class ResourceType(const):
+    RS_USER = 1
+    RS_LOCATION = 6
+
+
+class ErrorMessage(const):
+    REQUIRED = '{0} is required.'
+    NULL = '{0} may not be null.'
+    INVALID = '{0} is invalid.'
+    BLANK = '{0} may not be blank.'
+    MAX_LENGTH = '{0} must be less than or equal to {1} characters.'
+    MIN_LENGTH = '{0} must be at least {1} characters.'
+    MAX_VALUE = '{0} must be less than or equal to {1}.'
+    MIN_VALUE = '{0} must be greater or equal to {1}.'
+    ALREADY_EXISTS = '{0} already exists.'
+    DOES_NOT_EXIST = '{0} does not exist.'
+    PERMISSION_DENIED = 'Permission denied.'
 
 # USER_TYPE_CHOICES = [
 #     (UserType.USER, 'User'),

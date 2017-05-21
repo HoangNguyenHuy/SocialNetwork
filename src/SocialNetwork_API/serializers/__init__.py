@@ -34,3 +34,4 @@ class ClientSerializer(serializers.Serializer):
 
 from SocialNetwork_API.serializers.post import PostSerializer
 from SocialNetwork_API.serializers.comment import CommentSerializer
+from SocialNetwork_API.serializers.user import UserSerializer

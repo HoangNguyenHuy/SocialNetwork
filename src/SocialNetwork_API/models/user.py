@@ -56,12 +56,17 @@ class UserManager(BaseUserManager):
 
 
 class AbstractUser(AbstractBaseUser, PermissionsMixin):
+    """
+    An abstract base class implementing a fully featured User model with
+    admin-compliant permissions.
+
+    Username and password are required. Other fields are optional.
+    """
     username = models.CharField(
         _('username'),
+        max_length=30,
         unique=True,
-        max_length=20,
-        default='',
-        help_text=_('Required. 20 characters or fewer. Letters, digits and @/./+/-/_ only.'),
+        help_text=_('Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.'),
         validators=[
             validators.RegexValidator(
                 r'^[\w.@+-]+$',
@@ -73,16 +78,9 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
-    email = models.EmailField(
-        _('email address'),
-        unique=True,
-        help_text=_('245 characters or fewer. Letters, digits and @/./+/-/_ only.'),
-        error_messages={
-            'unique': _('A user with that email already exists.'),
-        },
-    )
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
+    email = models.EmailField(_('email address'), blank=True)
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -109,33 +107,36 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
         abstract = True
 
     def get_full_name(self):
+        """
+        Returns the first_name plus the last_name, with a space in between.
+        """
         full_name = '%s %s' % (self.first_name, self.last_name)
         return full_name.strip()
 
+    def get_short_name(self):
+        "Returns the short name for the user."
+        return self.first_name
+
     def email_user(self, subject, message, from_email=None, **kwargs):
+        """
+        Sends an email to this User.
+        """
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
-
 class User(AbstractUser):
+
     is_disabled = models.BooleanField(default=False)
     manager_id = models.PositiveIntegerField(default=0)
     user_type = TinyIntegerField(default=UserType.USER)
-
-    Sex=models.IntegerField(default=SexType.UNKNOWN)
-    Phone = models.CharField(max_length=255, default="")
-    MemoryUsed = models.FloatField(default=0)
-    TotalMemory = models.FloatField(default=10)
-    # DOB=???
+    sex = models.IntegerField(default=SexType.UNKNOWN)
+    phone = models.CharField(max_length=255, default="")
+    memoryUsed = models.FloatField(default=0)
+    totalMemory = models.FloatField(default=10)
+    dob = models.DateTimeField
 
     class Meta(AbstractUser.Meta):
         db_table = 'auth_user'
         swappable = 'AUTH_USER_MODEL'
-
-    # @property
-    # def is_band_admin(self):
-    #     if self.user_type and self.user_type == UserType.USER:
-    #         return True
-    #     return False
 
     def __str__(self):
         return '{},type:{},mid:{}'.format(

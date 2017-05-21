@@ -1,4 +1,6 @@
 from rest_framework import exceptions,status
+from rest_framework import permissions
+from rest_framework.decorators import list_route
 from rest_framework.response import Response
 
 from SocialNetwork_API.exceptions import ServiceException
@@ -86,6 +88,27 @@ class PostViewSet(BaseViewSet):
                 del post_data['_state']
 
             return Response(post_data, status=status.HTTP_200_OK)
+
+        except Exception as exception:
+            raise exception
+
+    def get_list_post_of_user(self, request):
+        try:
+            queryset = Posts.objects.all().filter(user_id=1)
+            serializer = PostSerializer(queryset, many=True)
+            return Response(serializer.data)
+
+        except Exception as exception:
+            raise exception
+
+    @list_route(methods=['get'], permission_classes=(permissions.AllowAny,))
+    def get_list_post_of_friend(self, request):
+        try:
+            get_friend = Friend.objects.all().filter(user_id=1)
+            for i in get_friend:
+                queryset = Posts.objects.all().filter(user_id=i.friend_user_id)
+                serializer = PostSerializer(queryset, many=True)
+            return Response(serializer.data)
 
         except Exception as exception:
             raise exception

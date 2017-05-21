@@ -1,16 +1,32 @@
 sua het các table them giong lop model
 them vao bao cao table user field email
 sua table user gom first name(lenght 30) va last name(lenght 30)
-hoi a ve cai model user filed DOB config nhu the nao
-hoi a ve cai model sao migrate ko ra het all field
-cai phpmyadmin quan ly mysql
-tao auth-user, login,logout, token
+
+hoi a ve vi tri dat thang xu ly login
+hoi a ve nhung method trong service user
 
 
-**********đang thực hiện
+1.	Đăng bài viết:      ok
+2.	Upload dữ liệu:
+3.	Chia sẻ dữ liệu:
+4.	Xem danh sách dữ liệu:
+5.	Download:
+6.	Bình luận bài viết:     ok
+7.	Trả lời bình luận:  ok
+8.	Đăng nhập:
+9.	Xem danh sách bài viết:     ok
+10.	Quản lý người dùng:
+11.	Quản lý nhóm:
+12.	Xem lịch sử download:
+13.	Duyệt dữ liệu:
 
+*****************************************đang thực hiện
+tao method upload file
+get list post của friend
+tao api user
+tao auth-user, login,logout, token ( service/user)
 
-**********đã hoàn thành
+*****************************************đã hoàn thành
 method create post ( cần update lại)
 method retreve post ( cần update lại)
 method delete post (thêm delete theo arango, tại sao not found ko hiển thị đc như not found của update)
@@ -22,3 +38,5 @@ tao method create comment
 coi lai method create comment khi nhap post_id ko dung se ntn
 tao method update comment
 tao method delete comment
+
+follow user (chưa test) (UserSerialize/user_friend)

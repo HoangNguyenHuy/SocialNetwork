@@ -6,7 +6,7 @@ class Data(TimeStampedModel):
     id = models.AutoField(primary_key=True)
     user_id = models.PositiveIntegerField(default=0)
     name = models.CharField(max_length=255, default='')
-    data_status = models.CharField(max_length=255, default='')
+    data_status = models.PositiveIntegerField(default=0)
     capacity = models.FloatField(default=0)
     approval = models.BooleanField(default=False)
 

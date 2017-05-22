@@ -1,0 +1,207 @@
+body {
+    padding-top: 70px; 
+}
+nav{
+	background-color:#ffffff;
+}
+
+#wrapper {
+    width: 100%;
+    background:#202020;
+	margin:0px;
+	padding:0px;
+}
+
+#page-wrapper {
+    padding: 15px 15px;
+    min-height: 600px;
+    background:#F3F3F3;
+   
+}
+#page-inner {
+    width:100%;
+    margin:10px 20px 10px 0px;
+    background-color:#fff!important;
+    padding:10px;
+    min-height:1200px;
+}
+button.btn.btn-link:hover{
+	text-decoration:none;
+}
+button.btn.btn-send{
+	float: right;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+h2{
+	text-align:center;
+}
+div.row{
+	margin: 0 10px;
+}
+div.icon a span{
+	margin-right:5px;
+}
+div.icon a{
+	padding-left:30px;
+}
+div.icon a:hover{
+	text-decoration:none;
+	color:green;
+}
+div.navbar-right a{
+	margin-left:10px;
+}
+div.navbar-right a:hover{
+	text-decoration:none;
+	color:red;
+}
+tr td a:hover{
+	text-decoration:none;
+	color:red;
+}
+div.button-container{
+	margin-top:20px;
+}
+div.button-container a{
+	text-decoration:none;
+	float:right;
+}
+div.button-container a:hover{
+	text-decoration:none;
+	color:red;
+	cursor:pointer;
+}
+div.button-container button{
+	background-color:green;
+	color:white;
+	margin-left:15px;
+	float:right;
+}
+.text-center {
+    text-align:center;
+}
+
+p {
+    font-size:16px;
+    line-height:25px;
+    padding-top:20px;
+}
+
+.user-image {
+    margin: 25px auto;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+max-height:170px;
+max-width:170px;
+}
+
+.navbar-cls-top .navbar-brand {
+color: #fff;
+background: #C90000;
+width: 260px;
+text-align: center;
+height: 60px;
+font-size: 30px;
+font-weight: 700;
+}
+.sidebar-collapse , .sidebar-collapse .nav{
+	background:none;
+}
+.sidebar-collapse .nav {
+	padding:0;
+}
+.sidebar-collapse .nav > li > a {
+	color:#fff;
+	background:#202020;
+	text-shadow:none;
+	
+}
+.sidebar-collapse > .nav > li > a {
+	padding:15px 10px;
+}
+.sidebar-collapse > .nav > li {
+	border-bottom: 1px solid rgba(107, 108, 109, 0.19);
+}
+.sidebar-collapse .nav > li > a:hover,
+.sidebar-collapse .nav > li > a:focus {
+	
+	background:#0A0A0A;
+	outline:0;
+}
+
+.navbar-side {
+	border:none;
+	background-color: #202020;
+	
+}
+.navbar-brand:hover {
+
+background: #C90000;
+color:#fff;
+
+}
+
+.navbar-default {
+border:0px solid black;
+     
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+background-color: #B40101;
+}
+.navbar-default .navbar-toggle {
+border-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+background-color: #FFF;
+}
+.nav > li > a > i {
+    margin-right:10px;
+}
+
+ @media(min-width:768px) {
+ #page-wrapper{
+		   margin: 0 0 0 260px;
+	padding: 15px 30px;
+	min-height: 1200px;
+	
+}
+
+
+.navbar-side {
+	z-index: 1;
+	position: absolute;
+	width: 260px;
+}
+
+.navbar {
+ border-radius: 0px; 
+}
+#imageUpload
+{
+    display: none;
+}
+
+#profileImage
+{
+    cursor: pointer;
+}
+
+#profile-container {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    -webkit-border-radius: 0%;
+    -moz-border-radius: 0%;
+    -ms-border-radius: 0%;
+    -o-border-radius: 0%;
+    border-radius: 0%;
+}
+
+#profile-container img {
+    width: 150px;
+    height: 150px;
+}
+

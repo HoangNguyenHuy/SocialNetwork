@@ -24,7 +24,6 @@ class TokenAuthentication(authentication.BaseAuthentication):
 
         self._check_headers(request)
         auth = get_authorization_header(request).split()
-
         # khi login thi request nen duoc return ngay tai cho nay, vi minh ko care token
         if not auth or auth[0].lower() != b'token':
             return None

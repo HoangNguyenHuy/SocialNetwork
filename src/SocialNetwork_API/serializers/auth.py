@@ -4,8 +4,6 @@ from rest_framework import serializers
 from rest_framework import exceptions
 
 from SocialNetwork_API.services import UserService
-from SocialNetwork_API.models import Api
-
 
 class AuthTokenSerializer(serializers.Serializer):
     email = serializers.CharField(required=False)
@@ -18,7 +16,7 @@ class AuthTokenSerializer(serializers.Serializer):
         password = attrs.pop('password', None)
 
         if email and password:
-            user = UserService.authenticate(email=email, password=password)
+            user = UserService.authenticate(email=email, username=None, password=password)
             if user:
                 if not user.is_active:
                     msg = _('Your account is not activated.')
@@ -47,9 +45,3 @@ class AuthTokenSerializer(serializers.Serializer):
         attrs['is_social_login'] = False
         attrs['provider'] = ''
         return attrs
-
-    class Meta:
-        model = Api
-        fields = (
-            'id', 'user_id', 'social_id', 'provider'
-        )

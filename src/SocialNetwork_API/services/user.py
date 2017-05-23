@@ -45,9 +45,12 @@ class UserService(BaseService):
             return None
 
     @classmethod
-    def authenticate(cls, email, password):
+    def authenticate(cls, email, username, password):
         try:
-            user = User.objects.filter(email=email)[0]
+            if email:
+                user = User.objects.filter(email=email)[0]
+            if username:
+                user = User.objects.all().filter(username=username)[0]
             if user and user.check_password(password):
                 return user
             else:

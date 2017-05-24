@@ -50,7 +50,7 @@ class UserService(BaseService):
             if email:
                 user = User.objects.filter(email=email)[0]
             if username:
-                user = User.objects.all().filter(username=username)[0]
+                user = User.objects.filter(username=username)[0]
             if user and user.check_password(password):
                 return user
             else:

@@ -16,7 +16,7 @@ class AuthTokenSerializer(serializers.Serializer):
         password = attrs.pop('password', None)
 
         if email and password:
-            user = UserService.authenticate(email=email, username=None, password=password)
+            user = UserService.authenticate(email=email, username=None, password=password, **attrs)
             if user:
                 if not user.is_active:
                     msg = _('Your account is not activated.')
@@ -27,7 +27,7 @@ class AuthTokenSerializer(serializers.Serializer):
                 msg = _('Unable to log in with provided credentials.')
                 raise exceptions.ValidationError(msg)
         elif username and password:
-            user = authenticate(username=username, password=password, **attrs)
+            user = UserService.authenticate(username=username, email=None, password=password, **attrs)
             if user:
                 if not user.is_active:
                     msg = _('Your account is not activated.')

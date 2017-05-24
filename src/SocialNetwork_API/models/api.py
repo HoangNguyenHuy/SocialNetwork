@@ -8,7 +8,8 @@ from SocialNetwork_API.models.user_types import PositiveTinyIntegerField
 class Api(TimeStampedModel):
     # expired_at = models.DateTimeField(auto_now=False, default=settings.REST_FRAMEWORK['EXPIRED_FOREVER'])
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    # user = models.ForeignKey(settings.AUTH_USER_MODEL) tai sao khi dung cai nay thi lai sai
+    user_id = models.PositiveIntegerField(default=0)
     # device = models.CharField(max_length=64)
     # ip = models.GenericIPAddressField()
     token = models.CharField(max_length=255)

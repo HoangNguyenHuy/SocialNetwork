@@ -50,8 +50,8 @@ class TokenAuthentication(authentication.BaseAuthentication):
         except self.model.DoesNotExist:
             raise AuthenticationFailed(_('Invalid request token.'))
 
-        # if not token.user.is_active:
-        #     raise AuthenticationFailed(_('User inactive or deleted.'))
+        if not token.user.is_active:
+            raise AuthenticationFailed(_('User inactive or deleted.'))
 
         if self.token_expired(token):
             #token.delete()

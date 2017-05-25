@@ -23,14 +23,14 @@ hoi a ve UserLoginMixin dung de lam gi
     memoryUsed = 0
     totalMemory = 30
 """
-1.	Đăng bài viết:      ok
+1.	Đăng bài viết:              ok
 2.	Upload dữ liệu:
 3.	Chia sẻ dữ liệu:
 4.	Xem danh sách dữ liệu:
 5.	Download:
-6.	Bình luận bài viết:     ok
-7.	Trả lời bình luận:  ok
-8.	Đăng nhập:
+6.	Bình luận bài viết:         ok
+7.	Trả lời bình luận:          ok
+8.	Đăng nhập:                  ok
 9.	Xem danh sách bài viết:     ok
 10.	Quản lý người dùng:
 11.	Quản lý nhóm:
@@ -41,7 +41,6 @@ hoi a ve UserLoginMixin dung de lam gi
 tao method upload file
 get list post của friend
 tao api user
-tao auth-user, login,logout, token ( service/user)
 
 *****************************************đã hoàn thành
 method create post ( cần update lại)
@@ -57,3 +56,4 @@ tao method update comment
 tao method delete comment
 
 follow user (chưa test) (UserSerialize/user_friend)
+tao auth-user, login,logout, token ( service/user)

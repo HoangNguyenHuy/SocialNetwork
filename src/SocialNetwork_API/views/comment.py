@@ -48,7 +48,7 @@ class CommentViewSet(BaseViewSet):
         except Exception as exc:
             raise exc
 
-    def destroy(self, request, pk=None, *args, **kwargs):
+    def delete(self, request, pk=None, *args, **kwargs):
         try:
             comment = self.get_and_check(pk)
             if comment.user_id != 1:
@@ -75,14 +75,12 @@ class CommentViewSet(BaseViewSet):
 
         data = request.data.copy()
 
-        if data['comment'] == comment.comment:
+        if not data:
             raise exceptions.APIException('update must be implemented.')
 
+        data['user_id'] = request.user.id
         if comment:
             data['post_id'] = comment.post_id
             if 'reply_to_comment_id' in data:
                 del data['reply_to_comment_id']
-
-        data['user_id'] = 1#request.user.id
-
         return data

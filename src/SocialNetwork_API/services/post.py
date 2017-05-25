@@ -12,8 +12,7 @@ class PostService(BaseService):
     @classmethod
     def get_post(cls, post_id):
         try:
-            queryset = Posts.objects.all()#.filter(id=post_id)
-            # return Posts.objects.get(pk=post_id)
+            queryset = Posts.objects.all()
             post = get_object_or_404(queryset, pk=post_id)
             return post
         except Exception as exception:
@@ -40,7 +39,7 @@ class PostService(BaseService):
 
 
     @classmethod
-    def delete_comment(cls, user, post):
+    def delete_comment(cls, post):
         try:
             with transaction.atomic():
                 # Delete comment from mysqldb

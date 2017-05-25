@@ -10,7 +10,7 @@ from SocialNetwork_API.services import PostService
 class PostSerializer(ServiceSerializer):
     user_id = serializers.IntegerField(required=True)
     content = serializers.CharField(required=True)
-    status = serializers.IntegerField(required=False)
+    status = serializers.IntegerField(required=False, default=StatusType.PUBLIC)
 
     def validate(self, data):
         # validate required fields

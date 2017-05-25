@@ -1,5 +1,5 @@
-from rest_framework import status
 from rest_framework.response import Response
+from rest_framework import status, exceptions
 
 from SocialNetwork_API.serializers import AuthTokenSerializer
 from SocialNetwork_API.services import UserService, ApiService
@@ -18,6 +18,13 @@ class AuthViewSet(BaseViewSet):
             return Response(user, status=status.HTTP_200_OK)
         except Exception as exception:
             raise exception
+
+    def delete(self, request):
+        if request.user and request.user.is_authenticated():
+            ApiService.delete_session(token=request.token)
+            return Response(status=status.HTTP_200_OK)
+        else:
+            raise exceptions.NotAuthenticated()
 
     @classmethod
     def check_login(cls, data):

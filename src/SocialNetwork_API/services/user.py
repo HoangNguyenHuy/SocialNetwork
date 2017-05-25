@@ -61,10 +61,7 @@ class UserService(BaseService):
     @classmethod
     def save(cls, user_data, instance=None):
         try:
-            profile_data = user_data.pop('profile', None)
-            band_data = user_data.pop('band', None)
-            fan_data = user_data.pop('fan', None)
-            password = user_data.pop('password', None)
+            password = user_data.data.pop('password', None)
             email = user_data.get('email', None)
             bands = user_data.pop('bands', None)
 

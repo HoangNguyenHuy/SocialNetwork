@@ -8,3 +8,4 @@ class BaseViewSet(viewsets.ViewSet):
 from SocialNetwork_API.views.post import PostViewSet
 from SocialNetwork_API.views.auth import AuthViewSet
 from SocialNetwork_API.views.comment import CommentViewSet
+from SocialNetwork_API.views.user import UserViewSet

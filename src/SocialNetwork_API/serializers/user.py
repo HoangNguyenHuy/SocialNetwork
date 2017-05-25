@@ -62,26 +62,25 @@ class UserSerializer(ServiceSerializer):
                                                                message='email already in use.')])
     password = serializers.CharField(required=True, min_length=6)
 
-    def to_representation(self, instance):
-        ret = super(UserSerializer, self).to_representation(instance)
-        if 'password' in ret:
-            del ret['password']
-        return ret
-
-    def validate_user_type(self, value):
-        # TODO: Not allow user set themself to admin or staff
-        if not UserType.is_valid_type(value):
-            raise exceptions.ValidationError(ErrorMessage.INVALID.format("user_type"))
-        return value
-
-    def validate(self, data):
-        return data
+    # def to_representation(self, instance):
+    #     ret = super(UserSerializer, self).to_representation(instance)
+    #     if 'password' in ret:
+    #         del ret['password']
+    #     return ret
+    #
+    # def validate_user_type(self, value):
+    #     # TODO: Not allow user set themself to admin or staff
+    #     if not UserType.is_valid_type(value):
+    #         raise exceptions.ValidationError(ErrorMessage.INVALID.format("user_type"))
+    #     return value
+    #
+    # def validate(self, data):
+    #     return data
 
     def create(self, validated_data):
-        for key in ['groups', 'user_permission']:
-            if key in validated_data:
-                del validated_data[key]
-
+        # for key in ['groups', 'user_permission']:
+        #     if key in validated_data:
+        #         del validated_data[key]
         user = UserService.save(validated_data)
         return user
 

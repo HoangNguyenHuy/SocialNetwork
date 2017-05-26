@@ -37,3 +37,4 @@ from SocialNetwork_API.serializers.comment import CommentSerializer
 from SocialNetwork_API.serializers.user import UserSerializer, FriendSerialiser
 from SocialNetwork_API.serializers.api import ApiSerializer
 from SocialNetwork_API.serializers.auth import AuthTokenSerializer
+from SocialNetwork_API.serializers.data import DataSerializer

@@ -18,6 +18,11 @@ class StatusType(const):
     FRIEND=3
     CUSTOM=4
 
+class StatusDataType(const):
+    PUBLIC=1
+    PRIVATE=2
+    FRIEND=3
+
 class UserType(const):
     USER = 1
     SUPERUSER = 2

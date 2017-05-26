@@ -130,8 +130,8 @@ class User(AbstractUser):
     user_type = TinyIntegerField(default=UserType.USER)
     sex = models.IntegerField(default=SexType.UNKNOWN)
     phone = models.CharField(max_length=255, default="")
-    memory_used = models.FloatField(default=0)
-    total_memory = models.FloatField(default=10)
+    memory_used = models.BigIntegerField(default=0)
+    total_memory = models.BigIntegerField(default=10737418240)
     dob = models.DateField(_('Date checkout'), blank=True, null=True)
 
     class Meta(AbstractUser.Meta):

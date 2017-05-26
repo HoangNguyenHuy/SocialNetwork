@@ -1,4 +1,7 @@
 import os
+
+from os.path import join
+
 from . import env
 
 # Arangodb
@@ -154,8 +157,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATIC_URL = '/static/'
+MEDIA_FOLDER = 'media'
+MEDIA_ROOT = join(BASE_DIR, MEDIA_FOLDER)
+MEDIA_URL = '{0}{1}{2}'.format('/', MEDIA_FOLDER, '/')
+STATIC_URL = join(BASE_DIR,'static/')
 API_URL = '127.0.0.25:8014'
 
 # Cors

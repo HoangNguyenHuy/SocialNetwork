@@ -2,27 +2,6 @@ sua het các table them giong lop model
 them vao bao cao table user field email
 sua table user gom first name(lenght 30) va last name(lenght 30)
 
-hoi a ve vi tri dat thang xu ly login
-hoi a ve nhung method trong service user
-hoi a ve UserLoginMixin dung de lam gi
-""" tao user test login
-    admin = pbkdf2_sha256$24000$UozVqQ8fombq$bwRut9HciexWasf1vlY1uaUOo1HJkY0RLJnr+2OgN+c=
-    last_login = 2017-05-22 04:35:22.926393
-    is_superuser = 0
-    username = admin
-    firtname, lastname = None
-    email = random
-    is_staff = 0
-    is_active = 1
-    date_joined = 2017-05-18 07:32:33.687063
-    is_disabled = 0
-    manage_id = 0
-    user_type = 1
-    sex = random
-    phone = random
-    memoryUsed = 0
-    totalMemory = 30
-"""
 1.	Đăng bài viết:              ok
 2.	Upload dữ liệu:
 3.	Chia sẻ dữ liệu:
@@ -32,15 +11,15 @@ hoi a ve UserLoginMixin dung de lam gi
 7.	Trả lời bình luận:          ok
 8.	Đăng nhập:                  ok
 9.	Xem danh sách bài viết:     ok
-10.	Quản lý người dùng:
-11.	Quản lý nhóm:
-12.	Xem lịch sử download:
-13.	Duyệt dữ liệu:
+10.	Quản lý người dùng:         xx
+11.	Quản lý nhóm:               xx
+12.	Xem lịch sử download:       xx
+13.	Duyệt dữ liệu:              xx
 
 *****************************************đang thực hiện
 tao method upload file
 get list post của friend
-tao api user
+
 
 *****************************************đã hoàn thành
 method create post ( cần update lại)
@@ -55,5 +34,6 @@ coi lai method create comment khi nhap post_id ko dung se ntn
 tao method update comment
 tao method delete comment
 
-follow user (chưa test) (UserSerialize/user_friend)
-tao auth-user, login,logout, token ( service/user)
+follow user (UserSerialize/user_friend)
+tao auth-user, login,logout, token (service/user)
+tao api user (moi tao dc create user)

@@ -4,9 +4,8 @@ from rest_framework import status
 
 from SocialNetwork_API.serializers import CommentSerializer
 from SocialNetwork_API.views import BaseViewSet
-from SocialNetwork_API.services import CommentService,PostService
+from SocialNetwork_API.services import CommentService
 from SocialNetwork_API.exceptions import ServiceException
-
 
 class CommentViewSet(BaseViewSet):
     view_set = 'comment'

@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+
 from django.contrib.auth.models import (
     AbstractBaseUser, PermissionsMixin,
     BaseUserManager
@@ -124,15 +125,14 @@ class AbstractUser(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
 class User(AbstractUser):
-
     is_disabled = models.BooleanField(default=False)
     manager_id = models.PositiveIntegerField(default=0)
     user_type = TinyIntegerField(default=UserType.USER)
     sex = models.IntegerField(default=SexType.UNKNOWN)
     phone = models.CharField(max_length=255, default="")
-    memoryUsed = models.FloatField(default=0)
-    totalMemory = models.FloatField(default=10)
-    dob = models.DateTimeField
+    memory_used = models.FloatField(default=0)
+    total_memory = models.FloatField(default=10)
+    dob = models.DateField(_('Date checkout'), blank=True, null=True)
 
     class Meta(AbstractUser.Meta):
         db_table = 'auth_user'

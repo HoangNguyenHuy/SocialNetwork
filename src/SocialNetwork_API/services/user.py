@@ -61,14 +61,10 @@ class UserService(BaseService):
     @classmethod
     def save(cls, user_data, instance=None):
         try:
-            password = user_data.data.pop('password', None)
-            email = user_data.get('email', None)
-            bands = user_data.pop('bands', None)
+            password = user_data.pop('password', None)
 
             user = instance if instance else User()
             is_new = instance is None
-
-            current_email = user.email
 
             # Set property values
             if 'username' in user_data and user.username != user_data['username']:
@@ -79,8 +75,6 @@ class UserService(BaseService):
 
             # Set password
             if is_new:
-                if not password and not user.password:
-                    password = Utils.id_generator(8)
                 user.set_password(password)
             else:
                 if password:
@@ -88,21 +82,6 @@ class UserService(BaseService):
 
             with transaction.atomic():
                 user.save()
-
-                cls.save_relation_data(user, profile_data, band_data, fan_data, is_new)
-
-                if email != current_email:
-                    cls.add_email(user.id, user.email, current_email=current_email, is_primary=True, password=password,
-                                  show_verify_link=True)
-
-            # Follow users
-            if is_new and bands and len(bands) > 0:
-                cls.follow_bands(user, bands)
-
-            if not is_new:
-                # Reset cache
-                cache_service = cls._get_cache_service()
-                cache_service.delete(user.id)
 
             return cls.get_user(user.id)
         except Exception as exception:
@@ -113,9 +92,9 @@ class UserService(BaseService):
         try:
             user_friend = Friend()
             user_friend.user_id = user.id
-            user_friend.follow_user_id = friend.id
+            user_friend.friend_user_id = friend.id
+
             with transaction.atomic():
-                # Save follow_user to mysqldb
                 user_friend.save()
 
                 # # Save follow_user to arangodb
@@ -176,3 +155,12 @@ class UserService(BaseService):
             'result': users,
             'count': count
         }
+
+    @classmethod
+    def get_user(cls, user_id):
+        try:
+            user = User.objects.get(pk=user_id)
+        except Exception as e:
+            cls.log_exception(e)
+            return None
+        return user

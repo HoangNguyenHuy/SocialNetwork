@@ -1,11 +1,9 @@
-import re
-from django.utils.translation import ugettext_lazy as _
 from rest_framework import exceptions
 from rest_framework.validators import UniqueValidator
 
 from SocialNetwork_API.serializers import ServiceSerializer, serializers
 from SocialNetwork_API.const import UserType, ErrorMessage
-from SocialNetwork_API.models import User
+from SocialNetwork_API.models import User, Friend
 from SocialNetwork_API.services import UserService
 
 class FriendSerialiser(serializers.Serializer):
@@ -13,8 +11,10 @@ class FriendSerialiser(serializers.Serializer):
     user_id = serializers.IntegerField(required=True)
 
     def validate(self, data):
-        friend_id = data['friend_id']
-        user_id = data['user_id']
+        if 'friend_id' in data:
+            friend_id = data['friend_id']
+        if 'user_id' in data:
+            user_id = data['user_id']
 
         if user_id == friend_id:
             raise exceptions.ValidationError('friend_id must be different with user_id.')
@@ -40,6 +40,9 @@ class FriendSerialiser(serializers.Serializer):
         except Exception as exception:
             raise exception
 
+    class Meta:
+        model = Friend
+        fields = ['id', 'user_id', 'friend_user_id']
 #     @classmethod
 #     def unfollow_band(cls, user, band):
 #         try:
@@ -91,7 +94,7 @@ class UserSerializer(ServiceSerializer):
         model = User
         read_only_fields = ('id', )
         fields = (
-            'id', 'email', 'username', 'password', 'sex', 'phone', 'totalMemory', 'memoryUsed', 'dob'
-            'date_joined', 'manager_id', 'is_superuser', 'is_staff', 'user_type'
+            'id', 'email', 'username', 'password', 'sex', 'phone', 'dob',
+            'date_joined', 'manager_id', 'is_superuser', 'is_staff', 'user_type','is_disabled',
         )
         extra_kwargs = {'password': {'write_only': True, 'hidden': True}}

@@ -1,1 +1,1 @@
-arangosh --server.password msu1234 --javascript.execute arangodb_config.js rvportal_db rvportal_graph reactivuser msu1234
+arangosh --server.password abc@123 --javascript.execute arangodb_config.js snportal_db snportal_graph root abc@123

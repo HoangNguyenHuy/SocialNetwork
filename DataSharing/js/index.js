@@ -1,4 +1,4 @@
-var API_endpoint = "http://127.0.0.25:8014/api/v1/";
+var API_endpoint = "http://127.0.0.1:8000/api/v1/";
 
 
 $('.toggle').on('click', function() {
@@ -19,7 +19,7 @@ $("#form_login").submit(function(e) {
 		// Success reponse handle
 		console.log(res);
 		localStorage.setItem('token', res.token);
-		window.location = '/home/hoangnguyen/workspace/SocialNetwork/SocialNetwork/DoAn/index.html';
+		window.location = 'main.html';
 	}, function(err){
 		// Error handle		
 	});

@@ -2,15 +2,13 @@ import _thread
 import time
 import hashlib
 
-from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.db.models import Q
-from django.conf import settings
 from django.template.defaultfilters import slugify
 
+from SocialNetwork_API.arango_services import ArangoUserService
 from SocialNetwork_API.services.base import BaseService
 from SocialNetwork_API.models import *
-from SocialNetwork_API.const import ResourceType
 
 
 class UserService(BaseService):
@@ -82,6 +80,7 @@ class UserService(BaseService):
 
             with transaction.atomic():
                 user.save()
+                ArangoUserService.save_user(user.id, user.__dict__)
 
             return cls.get_user(user.id)
         except Exception as exception:

@@ -42,6 +42,8 @@ function main (argv) {
 	var friendCollectionName = "sn_friend";
 	//var postTagCollectionName = "sn_post_tag"; thay the = type trong user_post type se co 3 loai comment, post, tag
 	var userPostCollectionName = "sn_user_post";
+	var postUserCollectionName = "sn_post_user"; //tag
+	var postCommentCollectionName = "sn_post_comment"; 
 	var userDataCollectionName = "sn_user_data"; //them type cho data gom 2 loai upload va download
 	var postDataCollectionName = "sn_post_data";
 	var userGroupCollectionName = "sn_user_group";
@@ -56,6 +58,8 @@ function main (argv) {
 						 {'name': userDataCollectionName, 'from': userCollectionName, 'to': dataCollectionName},
 						 {'name': postDataCollectionName, 'from': postCollectionName, 'to': dataCollectionName},
 						 {'name': userGroupCollectionName, 'from': postCollectionName, 'to': groupCollectionName},
+						 {'name': postCommentCollectionName, 'from': postCollectionName, 'to': contentCommentCollectionName},
+						 {'name': postUserCollectionName, 'from': postCollectionName, 'to': userCollectionName},
 						 ]
 
 	//var redundantVertexCollection = []

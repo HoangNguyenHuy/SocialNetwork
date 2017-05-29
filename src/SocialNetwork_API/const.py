@@ -12,6 +12,53 @@ class const(object):
             raise self.ConstCaseError('const name %r is not all uppercase' % name)
         self.__dict__[name] = value
 
+
+class ActionType(const):
+    FOLLOW = 1
+    LIKE = 2
+    COMMENT = 3
+    REPLY = 4
+    ADD = 5
+    UNLIKE = 6
+    UNCOMMENT = 7
+
+class CollectionType(const):
+    VERTEX = 1
+    EDGE = 2
+
+class ArangoVertex(const):
+    ACTIVITY = 'sn_activities'
+    COMMENT = 'sn_content_comment'
+    DATA_NOTIFICATION = 'sn_data_notification'
+    DATA = 'sn_datas'
+    GROUP = 'sn_group'
+    POST = 'sn_posts'
+    USER_NOTIFICATION = 'user_notification'
+    USER = 'sn_users'
+
+class ArangoEdge(const):
+    FRIEND = 'sn_friend'
+    POST_DATA = 'sn_post_data'
+    USER_DATA = 'sn_user_data'
+    USER_GROUP = 'sn_user_group'
+    USER_POST = 'sn_user_post'
+
+USER_FIELDS = [
+    'id',
+    'username',
+    'email',
+    'slug',
+    'first_name',
+    'last_name',
+    'dob',
+    'user_type',
+    'is_active',
+    'sex',
+    'phone',
+    'memory_used',
+    'total_memory',
+]
+
 class StatusType(const):
     PUBLIC=1
     PRIVATE=2

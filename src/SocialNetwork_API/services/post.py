@@ -2,7 +2,7 @@ from django.db import transaction
 
 from rest_framework.generics import get_object_or_404
 
-
+from SocialNetwork_API.arango_services import ArangoPostService
 from SocialNetwork_API.models import *
 from SocialNetwork_API.services.base import BaseService
 
@@ -30,8 +30,9 @@ class PostService(BaseService):
 
             with transaction.atomic():
                 post.save()
+                ArangoPostService.save_post(post.__dict__)
 
-                return post
+            return post
 
         except Exception as exception:
             cls.log_exception(exception)

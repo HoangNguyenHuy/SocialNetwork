@@ -1,4 +1,4 @@
-var API_endpoint = "http://127.0.0.1:8000/api/v1/";
+var API_endpoint = "http://127.0.0.1:8080/api/v1/";
 
 
 $('.toggle').on('click', function() {

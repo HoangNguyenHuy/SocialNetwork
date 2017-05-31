@@ -42,6 +42,9 @@ class ArangoEdge(const):
     USER_DATA = 'sn_user_data'
     USER_GROUP = 'sn_user_group'
     USER_POST = 'sn_user_post'
+    POST_USER = 'sn_post_user'
+    POST_COMMENT = 'sn_post_comment'
+
 
 USER_FIELDS = [
     'id',
@@ -57,6 +60,11 @@ USER_FIELDS = [
     'phone',
     'memory_used',
     'total_memory',
+]
+
+POST_COLLECTIONS = [
+    ArangoVertex.POST,
+    ArangoEdge.USER_POST
 ]
 
 class StatusType(const):

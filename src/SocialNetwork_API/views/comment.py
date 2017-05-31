@@ -6,6 +6,7 @@ from SocialNetwork_API.serializers import CommentSerializer
 from SocialNetwork_API.views import BaseViewSet
 from SocialNetwork_API.services import CommentService
 from SocialNetwork_API.exceptions import ServiceException
+from SocialNetwork_API.models import *
 
 class CommentViewSet(BaseViewSet):
     view_set = 'comment'
@@ -59,6 +60,15 @@ class CommentViewSet(BaseViewSet):
 
         except Exception as exc:
             return exc
+
+    def list(self, request):
+        try:
+            queryset = Comment.objects.all().filter(post_id=3)
+            serializer = CommentSerializer(queryset, many=True)
+            return Response(serializer.data)
+
+        except Exception as exception:
+            raise exception
 
     @classmethod
     def get_and_check(self, pk):

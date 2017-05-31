@@ -96,9 +96,8 @@ class UserService(BaseService):
             with transaction.atomic():
                 user_friend.save()
 
-                # # Save follow_user to arangodb
-                # if settings.SAVE_TO_ARANGODB:
-                #     ArangoUserService.follow_band(band.userband.__dict__, activity.__dict__)
+                # Save follow_user to arangodb
+                ArangoUserService.add_friend(user_friend.__dict__, activity_data=None)
 
             return True
         except Exception as exception:

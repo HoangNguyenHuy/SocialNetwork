@@ -5,6 +5,7 @@ from rest_framework.generics import get_object_or_404
 
 from SocialNetwork_API.models import *
 from SocialNetwork_API.services.base import BaseService
+from SocialNetwork_API.arango_services import ArangoCommentService
 
 class CommentService(BaseService):
 
@@ -18,6 +19,7 @@ class CommentService(BaseService):
 
             with transaction.atomic():
                 comment.save()
+                ArangoCommentService.save_comment(comment.__dict__)
 
                 return comment
 

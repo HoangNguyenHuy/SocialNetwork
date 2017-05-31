@@ -87,14 +87,15 @@ class PostViewSet(BaseViewSet):
     #         raise exception
 
     @list_route(methods=['get'], permission_classes=(permissions.AllowAny,))
-    def get_list_post_of_friend(self, request):
+    def get_post_of_friend(self, request):
         try:
-            get_friend = Friend.objects.all().filter(user_id=1)
-            for i in get_friend:
-                queryset = Posts.objects.all().filter(user_id=i.friend_user_id)
-                serializer = PostSerializer(queryset, many=True)
-            return Response(serializer.data)
-
+            data = PostService.get_post_of_friend(request.user.id)
+            # get_friend = Friend.objects.all().filter(user_id=10)
+            # for i in get_friend:
+            #     queryset = Posts.objects.all().filter(user_id=i.friend_user_id)
+            #     serializer = PostSerializer(queryset, many=True)
+            # return Response(serializer.data)
+            return Response(data)
         except Exception as exception:
             raise exception
 

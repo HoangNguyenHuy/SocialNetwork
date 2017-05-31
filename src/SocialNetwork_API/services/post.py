@@ -83,3 +83,10 @@ class PostService(BaseService):
     #             cls.get_child_comments(parent_comments, comments)
     #
     #     return parent_comments
+
+    @classmethod
+    def get_post_of_friend(cls, user_id):
+        try:
+            return (ArangoPostService.get_post_of_friend(user_id))
+        except Exception as e:
+            raise e

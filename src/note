@@ -17,12 +17,11 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 13.	Duyệt dữ liệu:              xx
 
 *****************************************đang thực hiện
-tao method upload file
-get list post của friend
+tao method upload file (lỗi field null)
 
 
 *****************************************đã hoàn thành
-method create post ( cần update lại)
+method create post (đã update insert arango)
 method retreve post ( cần update lại)
 method delete post (thêm delete theo arango, tại sao not found ko hiển thị đc như not found của update)
 method list post
@@ -37,3 +36,5 @@ tao method delete comment
 follow user (UserSerialize/user_friend)
 tao auth-user, login,logout, token (service/user)
 tao api user (moi tao dc create user)
+
+get list post của friend theo arango

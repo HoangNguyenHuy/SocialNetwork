@@ -3,7 +3,7 @@ from SocialNetwork_API.arango_services.user import ArangoUserService
 # from SocialNetwork_API.arango_services.album import ArangoAlbumService
 from SocialNetwork_API.arango_services.post import ArangoPostService
 # from SocialNetwork_API.arango_services.content import ArangoContentService
-# from SocialNetwork_API.arango_services.comment import ArangoCommentService
+from SocialNetwork_API.arango_services.comment import ArangoCommentService
 # from SocialNetwork_API.arango_services.trend import ArangoTrendService
 # from SocialNetwork_API.arango_services.suggestion import ArangoSuggestionService
 # from SocialNetwork_API.arango_services.activity import ArangoActivityService

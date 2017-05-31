@@ -55,6 +55,7 @@ div.navbar-right a{
 div.navbar-right a:hover{
 	text-decoration:none;
 	color:red;
+	cursor:pointer;
 }
 tr td a:hover{
 	text-decoration:none;

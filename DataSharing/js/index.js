@@ -18,7 +18,8 @@ $("#form_login").submit(function(e) {
 	API.send('auth', 'post', form_data, function(res) {
 		// Success reponse handle
 		console.log(res);
-		localStorage.setItem('token', res.token);
+		window.localStorage.setItem('token', res.token);
+		alert(res.token);
 		window.location = 'main.html';
 	}, function(err){
 		// Error handle		

@@ -19,8 +19,11 @@ $("#form_login").submit(function(e) {
 		// Success reponse handle
 		console.log(res);
 		window.localStorage.setItem('token', res.token);
-		window.location = 'main.html';
+		var x = localStorage.getItem('token');
+        if (x !== 'undefined') {
+		    window.location = 'main.html';}
 	}, function(err){
+	    window.location = 'index.html';
 		// Error handle		
 	});
 	

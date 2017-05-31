@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title> History Download </title>
+	<title> Index </title>
     <meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,7 +15,7 @@
 	<script src="js/dropzone.js"></script>
 </head>
 <body>
-<div>
+<div id="request">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
@@ -48,7 +48,7 @@
 						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">Share File</button></li>
 						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModals" data-whatever="@getbootstrap">Upload File</button></li>
 					</ul>
-					<a href="index.html">Đăng xuất</a>
+					<a id="clear">Đăng xuất</a>
 				</div>
 				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
 				  <div class="modal-dialog">
@@ -108,7 +108,7 @@
 							<a  href="main.html"><i class="glyphicon glyphicon-list"></i> Bạn Bè</a>
 						</li>
 						<li>
-							<a  href="historydownload.html"><i class="glyphicon glyphicon-download-alt"></i> Lịch Sử Download</a>
+							<a href="historydownload.html"><i class="glyphicon glyphicon-download-alt"></i> Lịch Sử Download</a>
 						</li>
 					</ul>
 				   
@@ -172,7 +172,12 @@
 		<!-- /. PAGE WRAPPER  -->
 	</div>
 </div>
-<script language="Javascript">
+<script src='js/jquery.min.js'></script>
+<script src="js/API.js"></script>
+<script src="js/test.js"></script>
+<script src="js/index.js"></script>
+<script src="js/main.js"></script>
+<script language="JavaScript">
 	function removeDummy() {
 		//$("button").click(function () {
 		//$(this).parent().closest('#dummy').hide();

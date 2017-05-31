@@ -6,8 +6,7 @@ var API_endpoint = "http://127.0.0.1:8080/api/v1/";
 $('#clear').click( function() {
 localStorage.clear();
 console.log(window.localStorage.getItem('token'));
-
-//window.location = 'index.html';
+window.location = 'index.html';
 return false;
 });
 

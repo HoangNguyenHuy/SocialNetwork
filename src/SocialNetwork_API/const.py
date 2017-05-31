@@ -62,6 +62,11 @@ USER_FIELDS = [
     'total_memory',
 ]
 
+POST_COLLECTIONS = [
+    ArangoVertex.POST,
+    ArangoEdge.USER_POST
+]
+
 class StatusType(const):
     PUBLIC=1
     PRIVATE=2

@@ -18,9 +18,6 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 
 *****************************************đang thực hiện
 tao method upload file (lỗi field null)
-get list post của friend
-
-tạo method addfriend trong arango(đang bị lỗi arango ko lấy đc thông tin của friend)
 
 
 *****************************************đã hoàn thành
@@ -39,3 +36,5 @@ tao method delete comment
 follow user (UserSerialize/user_friend)
 tao auth-user, login,logout, token (service/user)
 tao api user (moi tao dc create user)
+
+get list post của friend theo arango

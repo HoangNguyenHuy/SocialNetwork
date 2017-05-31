@@ -17,12 +17,14 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 13.	Duyệt dữ liệu:              xx
 
 *****************************************đang thực hiện
-tao method upload file
+tao method upload file (lỗi field null)
 get list post của friend
+
+tạo method addfriend trong arango(đang bị lỗi arango ko lấy đc thông tin của friend)
 
 
 *****************************************đã hoàn thành
-method create post ( cần update lại)
+method create post (đã update insert arango)
 method retreve post ( cần update lại)
 method delete post (thêm delete theo arango, tại sao not found ko hiển thị đc như not found của update)
 method list post

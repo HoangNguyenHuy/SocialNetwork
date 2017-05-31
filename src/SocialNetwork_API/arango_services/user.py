@@ -149,26 +149,16 @@ class ArangoUserService(ArangoBaseService):
         ArangoCore.update_vertex_in_collection(ArangoVertex.USER, band_data, transaction)
 
     @classmethod
-    def follow_band(cls, band_data, activity_data):
-        if '_user_cache' in band_data:
-            del band_data['_user_cache']
-
+    def add_friend(cls, user_friend_data, activity_data):
+        if '_user_cache' in user_friend_data:
+            del user_friend_data['_user_cache']
         try:
             database = ArangoCore.get_database()
-            collections = ACTIVITY_COLLECTIONS
-            collections += [ArangoVertex.BAND, ArangoEdge.USER_FOLLOW]
+            collections = ArangoEdge.FRIEND
             with database.transaction(write=collections, commit_on_error=False) as transaction:
-                # Add relation between 2 user
-                ArangoCore.add_edge_to_collection(ArangoEdge.USER_FOLLOW, ArangoVertex.USER,
-                                                  activity_data['user_id'],
-                                                  ArangoVertex.USER, activity_data['band_id'], transaction)
-
-                # Add activity to graph
-                ArangoActivityService.save_activity(activity_data, transaction)
-
-                # Update band data
-                cls.update_band(band_data['user_id'], band_data['follow_count'], transaction)
-
+                ArangoCore.add_edge_to_collection(ArangoEdge.FRIEND, ArangoVertex.USER,
+                                                  user_friend_data['user_id'],
+                                                  ArangoVertex.USER, user_friend_data['friend_user_id'], transaction)
                 transaction.commit()
 
         except Exception as exception:

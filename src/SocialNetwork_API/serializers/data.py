@@ -9,7 +9,7 @@ from SocialNetwork_API.services import DataService, UserService
 
 class DataSerializer(ServiceSerializer):
     file = serializers.FileField(required=True)
-#coi lai cho nay nhung field null hay ko null
+
     def validate(self, data):
         if data['data_status'] not in [StatusDataType.PUBLIC, StatusDataType.PRIVATE, StatusDataType.FRIEND]:
             raise exceptions.APIException('status is invalid.')
@@ -25,4 +25,4 @@ class DataSerializer(ServiceSerializer):
 
     class Meta:
         model = Data
-        fields = ['id', 'user_id', 'name', 'data_status', 'capacity']
+        fields = ['id', 'user_id', 'file', 'name', 'data_status', 'capacity']

@@ -60,8 +60,8 @@ class UserViewSet(BaseViewSet):
     @list_route(methods=['post'], permission_classes=(permissions.AllowAny,))
     def generate_user_data(self, request, *args, **kwargs):
         try:
-
-            self.generate_single_user(10)
+            for i in range(1,10,1):
+                self.generate_single_user(i)
 
             return Response(status=status.HTTP_200_OK)
 
@@ -73,7 +73,8 @@ class UserViewSet(BaseViewSet):
         client = APIClient()
         username = '{0}{1}'.format('user', str(i).zfill(4))
         email = '{0}{1}'.format(username, '@gmail.com')
-        url = '{0}/{1}'.format(settings.API_URL, 'api/v1/user')
+        api_url = '{0}{1}'.format('http://', settings.API_URL)
+        url = '{0}/{1}'.format(api_url, 'api/v1/user')
         client.credentials(HTTP_HOST='localhost', HTTP_DEVICE='postname', HTTP_APPID=1, HTTP_TYPE=8, HTTP_AGENT='agent')
         response = client.post(url, {
             'username': username,
@@ -82,3 +83,28 @@ class UserViewSet(BaseViewSet):
         }, format='json')
 
         return response
+
+    # @list_route(methods=['post'], permission_classes=(permissions.AllowAny,))
+    # def auto_add_friend(self, request):
+    #     user_id = int(request.data['user_id'])
+    #     n = int(request.data['numbers'])
+    #     try:
+    #         for i in range(user_id, user_id + n, 1):
+    #             self.ad_add_friend(user_id, i)
+    #
+    #         return Response(status=status.HTTP_200_OK)
+    #
+    #     except Exception as exception:
+    #         raise exception
+    #
+    # @classmethod
+    # def ad_add_friend(cls, user_id, friend_id):
+    #     client = APIClient()
+    #     api_url = '{0}{1}'.format('http://', settings.API_URL)
+    #     url = '{0}/{1}'.format(api_url, 'api/v1/user/add_friend')
+    #     client.credentials(HTTP_HOST='localhost', HTTP_DEVICE='postname', HTTP_APPID=1, HTTP_TYPE=8, HTTP_AGENT='agent')
+    #     response = client.post(url, {
+    #         'friend_id': friend_id
+    #     }, format='json')
+    #
+    #     return response

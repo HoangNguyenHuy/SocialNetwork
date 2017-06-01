@@ -1,4 +1,4 @@
-from SocialNetwork_API.arango_services.base import ArangoBaseService
+from SocialNetwork_API.arango_services import ArangoBaseService
 from SocialNetwork_API.arango_core import ArangoCore
 from SocialNetwork_API.const import ArangoVertex, ArangoEdge, USER_FIELDS
 

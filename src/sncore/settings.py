@@ -161,7 +161,7 @@ MEDIA_FOLDER = 'media'
 MEDIA_ROOT = join(BASE_DIR, MEDIA_FOLDER)
 MEDIA_URL = '{0}{1}{2}'.format('/', MEDIA_FOLDER, '/')
 STATIC_URL = join(BASE_DIR,'static/')
-API_URL = '127.0.0.25:8014'
+API_URL = '127.0.0.1:8080'
 
 # Cors
 CORS_ORIGIN_ALLOW_ALL = True

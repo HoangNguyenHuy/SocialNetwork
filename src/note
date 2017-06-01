@@ -18,7 +18,7 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 
 *****************************************đang thực hiện
 tao method upload file (lỗi field null)
-
+tao unittest auto add friend
 
 *****************************************đã hoàn thành
 method create post (đã update insert arango)
@@ -38,3 +38,4 @@ tao auth-user, login,logout, token (service/user)
 tao api user (moi tao dc create user)
 
 get list post của friend theo arango
+tao unittest auto add_user

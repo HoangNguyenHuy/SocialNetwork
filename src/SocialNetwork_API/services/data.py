@@ -1,10 +1,11 @@
 from django.db import transaction
 
-from rest_framework.generics import get_object_or_404
+from os.path import join
 
-
+from SocialNetwork_API.arango_services import ArangoDataService
 from SocialNetwork_API.models import *
 from SocialNetwork_API.services.base import BaseService
+from sncore import settings
 
 
 class DataService(BaseService):
@@ -18,14 +19,26 @@ class DataService(BaseService):
             for key in request_data:
                 setattr(data, key, request_data[key])
 
-            file_info = None
-            if file:
-                return None
             with transaction.atomic():
+
+                #save info data
                 data.save()
+                ArangoDataService.save_post(data.__dict__)
+                # save file to local
+                if file:
+                    file_name = str(data.id)
+                    local_file_path = join(settings.MEDIA_ROOT, file_name)
+                    with open(local_file_path, 'wb') as dest:
+                        for chunk in file.chunks():
+                            dest.write(chunk)
 
-                return data
+                #update memory used
+                from SocialNetwork_API.services import UserService
+                user = UserService.get_user(data.user_id)
+                user_data = {'memory_used': user.memory_used + data.capacity}
+                UserService.save(instance=user, user_data=user_data)
 
+            return data
         except Exception as exception:
             cls.log_exception(exception)
             raise exception

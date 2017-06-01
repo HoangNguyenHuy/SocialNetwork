@@ -7,7 +7,6 @@ from SocialNetwork_API.exceptions import ServiceException
 from SocialNetwork_API.serializers import PostSerializer
 from SocialNetwork_API.services import PostService
 from SocialNetwork_API.views import BaseViewSet
-from SocialNetwork_API.models import *
 
 class PostViewSet(BaseViewSet):
     view_set = 'post'
@@ -15,10 +14,7 @@ class PostViewSet(BaseViewSet):
 
     def list(self, request):
         try:
-            queryset = Posts.objects.all().filter(user_id=request.user.id)
-            serializer = PostSerializer(queryset, many=True)
-            return Response(serializer.data)
-
+            return Response(PostService.get_post_of_user(request.user.id))
         except Exception as exception:
             raise exception
 
@@ -77,24 +73,20 @@ class PostViewSet(BaseViewSet):
         except Exception as exception:
             raise exception
 
-    # def get_list_post_of_user(self, request):
-    #     try:
-    #         queryset = Posts.objects.all().filter(user_id=1)
-    #         serializer = PostSerializer(queryset, many=True)
-    #         return Response(serializer.data)
-    #
-    #     except Exception as exception:
-    #         raise exception
+    @list_route(methods=['post', 'put'], permission_classes=(permissions.IsAuthenticated,))
+    def get_list_post_of_user(self, request):
+        try:
+            user_id = request.data['user_id']
+            return Response(PostService.get_post_of_user(user_id))
+        except Exception as exception:
+            raise exception
 
-    @list_route(methods=['get'], permission_classes=(permissions.AllowAny,))
+    @list_route(methods=['get'], permission_classes=(permissions.IsAuthenticated,))
     def get_post_of_friend(self, request):
         try:
             data = PostService.get_post_of_friend(request.user.id)
-            # get_friend = Friend.objects.all().filter(user_id=10)
-            # for i in get_friend:
-            #     queryset = Posts.objects.all().filter(user_id=i.friend_user_id)
-            #     serializer = PostSerializer(queryset, many=True)
-            # return Response(serializer.data)
+            # post_user = PostService.get_post_of_user(request.user.id)
+            # data.append(post_user)
             return Response(data)
         except Exception as exception:
             raise exception

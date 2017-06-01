@@ -90,3 +90,10 @@ class PostService(BaseService):
             return (ArangoPostService.get_post_of_friend(user_id))
         except Exception as e:
             raise e
+
+    @classmethod
+    def get_post_of_user(cls, user_id):
+        try:
+            return (ArangoPostService.get_post_of_user(user_id))
+        except Exception as e:
+            raise e

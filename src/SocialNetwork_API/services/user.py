@@ -80,7 +80,10 @@ class UserService(BaseService):
 
             with transaction.atomic():
                 user.save()
-                ArangoUserService.save_user(user.id, user.__dict__)
+                if not instance:
+                    ArangoUserService.save_user(user.id, user.__dict__)
+                else:
+                    ArangoUserService.save_user(user.id, user.__dict__,is_new=False)
 
             return cls.get_user(user.id)
         except Exception as exception:

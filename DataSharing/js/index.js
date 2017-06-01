@@ -18,12 +18,11 @@ $("#form_login").submit(function(e) {
 	API.send('auth', 'post', form_data, function(res) {
 		// Success reponse handle
 		console.log(res);
-		window.localStorage.setItem('token', res.token);
+		window.localStorage.setItem('token', JSON.stringify(res.token));
 		var x = localStorage.getItem('token');
         if (x !== 'undefined') {
 		    window.location = 'main.html';}
 	}, function(err){
-	    window.location = 'index.html';
 		// Error handle		
 	});
 	

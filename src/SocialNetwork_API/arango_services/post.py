@@ -1,4 +1,4 @@
-from SocialNetwork_API.arango_services.base import ArangoBaseService
+from SocialNetwork_API.arango_services import ArangoBaseService
 from SocialNetwork_API.arango_core import ArangoCore
 from SocialNetwork_API.const import ArangoVertex, ArangoEdge, POST_COLLECTIONS
 
@@ -24,11 +24,25 @@ class ArangoPostService(ArangoBaseService):
         user_id = 'sn_users/' + str(user_id)
         query_string = "LET friends = (" \
                        "FOR user IN OUTBOUND @user_id sn_friend OPTIONS {bfs: true, uniqueVertices: 'global'} " \
-                       "return user._id) " \
-                       "let post=(" \
-                       "for friend in friends for post in outbound friend sn_user_post return post) " \
-                       "return post "
+                       "RETURN user._id) " \
+                       "LET post=(" \
+                       "FOR friend IN friends " \
+                       "FOR post IN OUTBOUND friend sn_user_post OPTIONS {bfs: true, uniqueVertices: 'global'}" \
+                       "SORT post.created_at DESC " \
+                       "RETURN post) " \
+                       "RETURN post "
         parameter = {'user_id': user_id}
         result = ArangoCore.execute_query(query_string, parameter)
 
         return result
+
+    @classmethod
+    def get_post_of_user(cls, user_id):
+        user_id = 'sn_users/' + str(user_id)
+        query_string = "FOR post IN OUTBOUND @user_id sn_user_post OPTIONS {bfs: true, uniqueVertices: 'global'} " \
+                       "SORT post.created_at DESC " \
+                       "RETURN post"
+        parameter = {'user_id': user_id}
+        result = ArangoCore.execute_query(query_string, parameter)
+        return result
+

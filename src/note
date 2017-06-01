@@ -3,7 +3,7 @@ them vao bao cao table user field email
 sua table user gom first name(lenght 30) va last name(lenght 30)
 
 1.	Đăng bài viết:              ok
-2.	Upload dữ liệu:
+2.	Upload dữ liệu:             ok
 3.	Chia sẻ dữ liệu:
 4.	Xem danh sách dữ liệu:
 5.	Download:
@@ -17,8 +17,8 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 13.	Duyệt dữ liệu:              xx
 
 *****************************************đang thực hiện
-tao method upload file (lỗi field null)
 tao unittest auto add friend
+tao method download
 
 *****************************************đã hoàn thành
 method create post (đã update insert arango)
@@ -39,3 +39,4 @@ tao api user (moi tao dc create user)
 
 get list post của friend theo arango
 tao unittest auto add_user
+tao method upload file

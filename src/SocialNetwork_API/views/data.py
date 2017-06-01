@@ -1,9 +1,13 @@
 from rest_framework import status
+from rest_framework.decorators import list_route
 from rest_framework.response import Response
 
+from SocialNetwork_API import permissions
 from SocialNetwork_API.const import StatusDataType
 from SocialNetwork_API.serializers import DataSerializer
 from SocialNetwork_API.views import BaseViewSet
+from sncore import settings
+
 
 class DataViewSet(BaseViewSet):
 
@@ -21,6 +25,11 @@ class DataViewSet(BaseViewSet):
             del post_data['_state']
 
         return Response(post_data, status=status.HTTP_200_OK)
+
+    @list_route(methods=['post', 'put'], permission_classes=(permissions.AllowAny,))
+    def download(self, *args, **kwargs):
+        return_url = '{0}/api/v1/payment/execute'.format(settings.API_URL)
+        return Response(return_url)
 
     def take_data_from_request(cls, request):
         try:

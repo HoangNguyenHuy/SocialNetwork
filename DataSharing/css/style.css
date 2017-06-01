@@ -311,3 +311,12 @@ background-color: #FFF;
 .post .post-footer .comments-list .comment > .comments-list {
   margin-left: 50px;
 }
+div a#url {
+    display: inline-block;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+div ul.dropdown-menu{
+    margin-right: 60px;
+}

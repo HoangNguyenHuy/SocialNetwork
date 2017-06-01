@@ -28,8 +28,8 @@ class DataViewSet(BaseViewSet):
 
     @list_route(methods=['post', 'put'], permission_classes=(permissions.AllowAny,))
     def download(self, *args, **kwargs):
-        return_url = '{0}/api/v1/payment/execute'.format(settings.API_URL)
-        return Response(return_url)
+        url = '{0}/{1}'.format(settings.MEDIA_ROOT, 19)
+        return Response(url)
 
     def take_data_from_request(cls, request):
         try:

@@ -33,7 +33,7 @@ class CommentViewSet(BaseViewSet):
     def update(self, request, pk=None, *args, **kwargs):
         try:
             comment = self.get_and_check(pk)
-            if comment.user_id != 1:
+            if comment.user_id != request.user.id:
                 raise exceptions.PermissionDenied()
 
             data = self.take_data_from_request(request, comment)
@@ -51,7 +51,7 @@ class CommentViewSet(BaseViewSet):
     def delete(self, request, pk=None, *args, **kwargs):
         try:
             comment = self.get_and_check(pk)
-            if comment.user_id != 1:
+            if comment.user_id != request.user.id:
                 raise exceptions.PermissionDenied()
 
             comment.delete()

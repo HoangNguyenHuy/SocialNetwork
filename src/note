@@ -6,7 +6,7 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 2.	Upload dữ liệu:             ok
 3.	Chia sẻ dữ liệu:
 4.	Xem danh sách dữ liệu:
-5.	Download:
+5.	Download:                   ok
 6.	Bình luận bài viết:         ok
 7.	Trả lời bình luận:          ok
 8.	Đăng nhập:                  ok
@@ -18,7 +18,6 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 
 *****************************************đang thực hiện
 tao unittest auto add friend
-tao method download
 
 *****************************************đã hoàn thành
 method create post (đã update insert arango)
@@ -40,3 +39,4 @@ tao api user (moi tao dc create user)
 get list post của friend theo arango
 tao unittest auto add_user
 tao method upload file
+tao method download

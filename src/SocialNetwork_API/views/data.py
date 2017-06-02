@@ -14,6 +14,24 @@ class DataViewSet(BaseViewSet):
 
     serializer_class = DataSerializer
 
+    def list(self, request):
+        try:
+            return Response(DataService.get_data_of_user(request.user.id))
+        except Exception as exception:
+            raise exception
+
+    def delete(self, request, pk=None, *args, **kwargs):
+        try:
+            data = self.get_and_check(request)
+            file_data = data.copy()
+            if data.pop('user_id') != request.user.id:
+                raise exceptions.PermissionDenied()
+            DataService.delete_data(self,data=file_data)
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+        except Exception as exc:
+            return exc
+
     def create(self, request, *args, **kwargs):
 
         data = self.take_data_from_request(request)
@@ -27,7 +45,7 @@ class DataViewSet(BaseViewSet):
 
         return Response(post_data, status=status.HTTP_200_OK)
 
-    @list_route(methods=['post', 'put'], permission_classes=(permissions.AllowAny,))
+    @list_route(methods=['post', 'put'], permission_classes=(permissions.IsAuthenticated,))
     def download(self, request, *args, **kwargs):
         self.get_and_check(request)
         url = DataService.download(request.data['data_id'])
@@ -67,3 +85,4 @@ class DataViewSet(BaseViewSet):
         except Exception as e:
             raise e
         return data
+

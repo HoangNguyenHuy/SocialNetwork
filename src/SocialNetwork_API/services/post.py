@@ -19,7 +19,6 @@ class PostService(BaseService):
             # cls.log_exception(exception)  # cái này là cái gì
             return None
 
-
     @classmethod
     def save(cls, post_data, instance=None):
         try:
@@ -37,7 +36,6 @@ class PostService(BaseService):
         except Exception as exception:
             cls.log_exception(exception)
             raise exception
-
 
     @classmethod
     def delete_comment(cls, post):
@@ -64,7 +62,6 @@ class PostService(BaseService):
             cls.log_exception(exception)
             raise exception
 
-
     @classmethod
     def get_all_comments_of_post(cls, root_post_id):
         comments = Comment.objects.filter(post_id=root_post_id)
@@ -72,7 +69,6 @@ class PostService(BaseService):
         # cls.get_child_comments(parent_comments, comments)
 
         return parent_comments
-
 
     # @classmethod
     # def get_child_comments(cls, parent_comments, child_comments):

@@ -64,3 +64,36 @@ class DataService(BaseService):
     @classmethod
     def get_data(cls, data_id):
         return ArangoDataService.get_data(data_id)
+
+    @classmethod
+    def get_data_of_user(cls, user_id):
+        try:
+            return (ArangoDataService.get_data_of_user(user_id))
+        except Exception as e:
+            raise e
+
+    def delete_data(cls, data):
+        try:
+            file_name = data.get('name')
+            file_id = data.get('id')
+            extension = file_name[file_name.rfind('.'):]
+            name = str(file_id) + extension
+            url = '{0}/{1}'.format(settings.MEDIA_ROOT, name)
+            with transaction.atomic():
+
+                # Delete comment from mysqldb
+                data_id = data.get('id')
+                file_data = Data.objects.filter(id=data_id)
+                file_data.delete()
+
+                # Delete comment from arangodb
+                if settings.SAVE_TO_ARANGODB:
+                    ArangoDataService.delete_data(cls, data)
+
+                os.remove(url)
+
+                return True
+
+        except Exception as exception:
+            cls.log_exception(exception)
+            raise exception

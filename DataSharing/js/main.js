@@ -9,6 +9,9 @@ window.location = 'index.html';
 return false;
 });
 
+function loadpage() {
+    window.location.assign(window.location.href);
+}
 $(window).load(function(){
 	loadPostData();
 });
@@ -24,11 +27,23 @@ function loadPostData() {
        // Error handle
 	});
 }
+$('#target').submit(function(e) {
+	e.preventDefault();
+	var form_data = $(this).serialize();
 
+	API.send('post','post', form_data, function(res) {
+		// Success reponse handle
+//		console.log(res);
+
+	}, function(err){
+		// Error handle
+	});
+
+});
 function renderPostItem(item) {
     var htmlText =''
     if (t==0){htmlText+= '<div class="row">';}
-	console.log(item);
+//	console.log(item);
 //	viet them method get user de lay duoc ten user post bai viet
 //	API.send('user', 'get', null, function(res) {
 //		// Success reponse handle
@@ -113,6 +128,6 @@ function renderPostItem(item) {
     +        '</div>'
     +    '</div>';
     if (t==0){htmlText+='</div>'; t=1}
-    $('#page-inner').append(htmlText);
+    $('#page').append(htmlText);
 }
 

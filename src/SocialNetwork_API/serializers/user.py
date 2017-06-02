@@ -56,6 +56,10 @@ class FriendSerialiser(serializers.Serializer):
 #             raise exception
 #
 #
+
+
+
+
 class UserSerializer(ServiceSerializer):
     username = serializers.CharField(required=True, max_length=30,
                                      validators=[UniqueValidator(queryset=User.objects.all(),
@@ -64,6 +68,12 @@ class UserSerializer(ServiceSerializer):
                                    validators=[UniqueValidator(queryset=User.objects.all(),
                                                                message='email already in use.')])
     password = serializers.CharField(required=True, min_length=6)
+
+
+
+
+
+
 
     # def to_representation(self, instance):
     #     ret = super(UserSerializer, self).to_representation(instance)

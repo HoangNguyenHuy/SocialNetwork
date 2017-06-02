@@ -61,13 +61,19 @@
 							  <form id="target" name="target" role="form" class="form-horizontal" method="POST" enctype="multipart/form-data" >
 								  <div class="form-group">
 									  <div class="col-lg-12">
-										  <textarea rows="3" class="form-control" id="NoiDung" name="NoiDung" placeholder="Bạn muốn nói gì..."></textarea>
+										  <textarea rows="3" class="form-control" id="content" name="content" placeholder="Bạn muốn nói gì..."></textarea>
 									  </div>
 								  </div>
-								  <div class="form-group">
+								   <div class="form-group">
 										<div action="/file-upload" class="dropzone" id="my-awesome-dropzone"></div>
-										 <button class="btn btn-send" id="submit" name="submit">Chia Sẻ</button>
-									</div>
+									  	<button class="btn btn-send btn-success" id="submit" name="submit">Chia Sẻ</button>
+										<select class="selectpicker">
+										  <option>Công khai</option>
+										  <option>Bạn b</option>
+										  <option>Mình tôi</option>
+										</select>
+									  	<a href="#"><span id="gl" class="glyphicon glyphicon-tag"></span></a>
+								  </div>
 							  </form>
 						  </div>
 					  </div><!-- /.modal-content -->
@@ -84,13 +90,19 @@
 							<form id="targets" name="targets" role="form" class="form-horizontal" method="POST" enctype="multipart/form-data" >
 								<div class="form-group">
 									<div action="/file-upload" class="dropzone" id="my-awesome-dropzone"></div>
-									<button class="btn btn-send" id="submits" name="submits">Upload</button>
+									<button class="btn btn-send btn-success" id="submits" name="submits">Upload</button>
+									<select class="selectpicker">
+										  <option>Công khai</option>
+										  <option>Bạn bè</option>
+										  <option>Mình tôi</option>
+										</select>
 								</div>
 							</form>
 						</div>
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div>
+		</div>
 		</div>
 	</nav>
 	<div id="wrapper">
@@ -105,7 +117,7 @@
 							<a  href="information.html"><i class="glyphicon glyphicon-user"><span class="glyphicons glyphicons-group"></span></i> Thông Tin Cá Nhân</a>
 						</li>
 						<li>
-							<a  href="main.html"><i class="glyphicon glyphicon-list"></i> Bạn Bè</a>
+							<a  href="#"><i class="glyphicon glyphicon-list"></i> Bạn Bè</a>
 						</li>
 						<li>
 							<a href="historydownload.html"><i class="glyphicon glyphicon-download-alt"></i> Lịch Sử Download</a>
@@ -117,7 +129,7 @@
 			</nav>  
 			<!-- /. NAV SIDE  -->
 			<div id="page-wrapper" >
-				<div id="page-inner">
+				<div id="page-ner">
 					<!-- /. ROW  -->
 					<div class="row">
 						<div id="dummy" class="col-md-12">
@@ -130,6 +142,20 @@
 									<div class="col-md-10">
 										<p>jquery.min.js</p>
 										<a id="url" class="a-responsive" target="_blank" href="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="dummy" class="col-md-12">
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="removeDummy()"><span aria-hidden="true">&times;</span></button>
+									<div class="col-md-2">
+										<img src="image/filedown.png"/>
+									</div>
+									<div class="col-md-10">
+										<p>jquery.min.js</p>
+										<a id="url" target="_blank" href="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js</a>
 									</div>
 								</div>
 							</div>

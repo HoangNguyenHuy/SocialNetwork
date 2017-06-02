@@ -1,6 +1,8 @@
-from django.db import transaction
-
+import os
+import shutil
 from os.path import join
+
+from django.db import transaction
 
 from SocialNetwork_API.arango_services import ArangoDataService
 from SocialNetwork_API.models import *
@@ -26,7 +28,8 @@ class DataService(BaseService):
                 ArangoDataService.save_post(data.__dict__)
                 # save file to local
                 if file:
-                    file_name = str(data.id)
+                    extension = data.name[data.name.rfind('.'):]
+                    file_name = str(data.id)+extension
                     local_file_path = join(settings.MEDIA_ROOT, file_name)
                     with open(local_file_path, 'wb') as dest:
                         for chunk in file.chunks():
@@ -43,3 +46,21 @@ class DataService(BaseService):
             cls.log_exception(exception)
             raise exception
 
+    @classmethod
+    def download(cls, data_id):
+        try:
+            file_name = ArangoDataService.get_data(int(data_id),get_name=True)
+            extension = file_name[file_name.rfind('.'):]
+            old_file_name = str(data_id) + extension
+            url_old = '{0}/{1}'.format(settings.MEDIA_ROOT, old_file_name)
+            url_new = '{0}/{1}'.format(settings.DOWNLOAD_ROOT, file_name)
+            # os.rename(url_old, url_new)
+            shutil.copy2(url_old, url_new)
+            return url_new
+
+        except Exception as e:
+            raise e
+
+    @classmethod
+    def get_data(cls, data_id):
+        return ArangoDataService.get_data(data_id)

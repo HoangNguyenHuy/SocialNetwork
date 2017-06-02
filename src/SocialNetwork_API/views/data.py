@@ -2,11 +2,12 @@ from rest_framework import status
 from rest_framework.decorators import list_route
 from rest_framework.response import Response
 
+from rest_framework import exceptions
 from SocialNetwork_API import permissions
 from SocialNetwork_API.const import StatusDataType
 from SocialNetwork_API.serializers import DataSerializer
+from SocialNetwork_API.services import DataService
 from SocialNetwork_API.views import BaseViewSet
-from sncore import settings
 
 
 class DataViewSet(BaseViewSet):
@@ -27,9 +28,20 @@ class DataViewSet(BaseViewSet):
         return Response(post_data, status=status.HTTP_200_OK)
 
     @list_route(methods=['post', 'put'], permission_classes=(permissions.AllowAny,))
-    def download(self, *args, **kwargs):
-        url = '{0}/{1}'.format(settings.MEDIA_ROOT, 19)
+    def download(self, request, *args, **kwargs):
+        self.get_and_check(request)
+        url = DataService.download(request.data['data_id'])
         return Response(url)
+
+    @classmethod
+    def get_and_check(cls, request):
+        if 'data_id' not in request.data:
+            raise exceptions.APIException('data_id is required.')
+        data_id = request.data['data_id']
+        data = DataService.get_data(int(data_id))
+        if not data:
+            raise exceptions.APIException('data_id is invalid.')
+        return data
 
     def take_data_from_request(cls, request):
         try:

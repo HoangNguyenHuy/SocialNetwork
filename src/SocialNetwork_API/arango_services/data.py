@@ -19,3 +19,15 @@ class ArangoDataService(ArangoBaseService):
             return True
         except Exception as exception:
             raise exception
+
+    @classmethod
+    def get_data(cls, data_id, get_name=False):
+        try:
+            query_string = "FOR data IN sn_datas FILTER data.id == @data_id LIMIT 1 RETURN data"
+            if get_name:
+                query_string = "FOR data IN sn_datas FILTER data.id == @data_id LIMIT 1 RETURN data.name"
+            parameter = {'data_id': data_id}
+            result = ArangoCore.execute_query(query_string, parameter)
+            return result[0] if len(result) > 0 else None
+        except Exception as exception:
+            raise exception

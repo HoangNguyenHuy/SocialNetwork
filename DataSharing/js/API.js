@@ -5,14 +5,17 @@
 var API = {
 	send: function(url, method, data, onSuccess, onError) {
 		url = API_endpoint + url;
-		
-		var authToken = JSON.parse(localStorage.getItem('token'));
+
+		var authToken = false;
+		try {
+		    authToken = JSON.parse(localStorage.getItem('token'));
+		} catch(e) {}
 		
 		var headerConfig = {		
 			  "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
 			   'Accept': 'application/json',
 		};
-		if (authToken.token) {
+		if (authToken) {
 			headerConfig['Authorization'] = 'token ' + authToken.token;
 		}
 		

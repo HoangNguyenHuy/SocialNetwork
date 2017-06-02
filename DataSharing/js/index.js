@@ -19,6 +19,7 @@ $("#form_login").submit(function(e) {
 		// Success reponse handle
 		console.log(res);
 		window.localStorage.setItem('token', JSON.stringify(res.token));
+		window.localStorage.setItem('user', JSON.stringify(res.user));
 		var x = localStorage.getItem('token');
         if (x !== 'undefined') {
 		    window.location = 'main.html';}

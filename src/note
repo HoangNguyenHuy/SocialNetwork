@@ -18,6 +18,7 @@ sua table user gom first name(lenght 30) va last name(lenght 30)
 
 *****************************************đang thực hiện
 tao unittest auto add friend
+update api downoad gom view service arago_service/download
 
 *****************************************đã hoàn thành
 method create post (đã update insert arango)

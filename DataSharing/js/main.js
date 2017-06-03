@@ -43,17 +43,8 @@ $('#target').submit(function(e) {
 function renderPostItem(item) {
     var htmlText =''
     if (t==0){htmlText+= '<div class="row">';}
-	console.log(item);
-//	viet them method get user de lay duoc ten user post bai viet
-//	API.send('user', 'get', null, function(res) {
-//		// Success reponse handle
-//		res.map(function(item) {
-//			renderPostItem(item);
-//		});
-//	}, function(err){
-//		// Error handle
-//	});
-
+    //them 1 method lay user post
+    // thie lap lai time post = timenow - created_at
     htmlText +=''
     +   '<div class="col-md-6">'
     +        '<div class="panel panel-success post panel-shadow">'
@@ -63,7 +54,7 @@ function renderPostItem(item) {
     +                '</div>'
     +                '<div class="pull-left meta">'
     +                    '<div class="title h5">'
-    +                        '<a href="#"><b>MungPham</b></a>'
+    +                        '<a href="#"><b>ở đây là tên user post </b></a>'
     +                        'đã chia sẽ một bài.'
     +                    '</div>'
     +                    '<h6 class="text-muted time">' + item.created_at + '</h6>'

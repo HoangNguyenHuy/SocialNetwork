@@ -22,6 +22,10 @@ class ActionType(const):
     UNLIKE = 6
     UNCOMMENT = 7
 
+class DataType(const):
+    UPLOAD = 1
+    DOWNLOAD = 2
+
 class CollectionType(const):
     VERTEX = 1
     EDGE = 2

@@ -20,6 +20,16 @@ class UserViewSet(BaseViewSet):
     view_set = 'user'
     serializer_class = UserSerializer
 
+    def retrieve(self, request, pk=None, **kwargs):
+        try:
+            user = self.get_and_check(pk)
+            serializer = UserSerializer(user)
+
+            return Response(serializer.data)
+
+        except Exception as exception:
+            raise exception
+
     def create(self, request, *args, **kwargs):
         try:
             serializer = self.serializer_class(data=request.data)
@@ -108,3 +118,11 @@ class UserViewSet(BaseViewSet):
     #     }, format='json')
     #
     #     return response
+
+    @classmethod
+    def get_and_check(self, pk):
+        post = UserService.get_user(pk)
+        if not post:
+            raise exceptions.NotFound()
+
+        return post

@@ -4,11 +4,32 @@ html{
 body {
     padding-top: 70px;
     min-height: 100%;
+    background-color: #f3f3f3;
 }
 nav{
 	background-color:#ffffff;
 }
 
+/*#wrapper {
+    width: 100%;
+    background:#202020;
+	margin:0px;
+	padding:0px;
+}
+
+#page-wrapper {
+    padding: 15px 15px;
+    min-height: 600px;
+    background:#F3F3F3;
+
+}
+#page-inner {
+    width:100%;
+    margin:10px 20px 10px 0px;
+    background-color:#fff!important;
+    padding:10px;
+    min-height:1200px;
+}*/
 #wrapper {
     width: 100%;
     background:#202020;
@@ -50,7 +71,6 @@ h2{
 }
 div.row{
 	margin: 0 10px;
-	float:right;
 }
 div.icon a span{
 	margin-right:5px;
@@ -354,4 +374,8 @@ div#my-awesome-dropzone{
     border-radius:4px;
     width: 95%;
     margin-left: 15px;
+}
+nav.fixed {
+  position: fixed;
+  z-index: 10;
 }

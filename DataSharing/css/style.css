@@ -50,6 +50,7 @@ h2{
 }
 div.row{
 	margin: 0 10px;
+	float:right;
 }
 div.icon a span{
 	margin-right:5px;

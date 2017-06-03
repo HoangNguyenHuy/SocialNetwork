@@ -9,7 +9,7 @@ window.location = 'index.html';
 return false;
 });
 
-function loadpage() {
+function load_page() {
     window.location.assign(window.location.href);
 }
 $(window).load(function(){
@@ -43,7 +43,7 @@ $('#target').submit(function(e) {
 function renderPostItem(item) {
     var htmlText =''
     if (t==0){htmlText+= '<div class="row">';}
-//	console.log(item);
+	console.log(item);
 //	viet them method get user de lay duoc ten user post bai viet
 //	API.send('user', 'get', null, function(res) {
 //		// Success reponse handle
@@ -74,7 +74,7 @@ function renderPostItem(item) {
     +            '</div>'
     +            '<div class="icon">'
     +                '<a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>'
-    +                '<a href="#"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>'
+    +                '<a data-toggle="collapse" data-target="#'+item.id+'"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>'
     +                '<a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>'
     +            '</div>'
     +            '<div class="post-footer">'
@@ -84,7 +84,7 @@ function renderPostItem(item) {
     +                        '<a href="#"><i class="fa fa-edit"></i></a>'
     +                    '</span>'
     +                '</div>'
-    +                '<ul class="comments-list">'
+    +                '<ul id="'+item.id+'" class="collapse" class="comments-list">'
     +                    '<li class="comment">'
     +                        '<a class="pull-left" href="#">'
     +                            '<img class="avatar" src="image/user_1.jpg" alt="avatar">'

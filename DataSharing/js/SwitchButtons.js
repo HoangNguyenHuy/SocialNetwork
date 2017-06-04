@@ -4,10 +4,12 @@ function SwitchButtons(buttonId) {
     showBtn = 'button2';
     showBtn1 = 'button3';
     hideBtn = 'button1';
-	$("#inputUser").prop("readonly", false);
-	$("#inputFullname").prop("readonly", false);
-	$("#inputPhone").prop("readonly", false);
-	$("#inputPassword").prop("readonly", false);
+	$("#dob").prop("readonly", false);
+	$("#first_name").prop("readonly", false);
+	$("#last_name").prop("readonly", false);
+	$("#phone").prop("readonly", false);
+	$("#password").prop("readonly", false);
+	$("#email").prop("readonly", false);
   }
   if (buttonId == 'button2') {
     showBtn = 'button1';

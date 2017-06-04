@@ -379,3 +379,6 @@ nav.fixed {
   position: fixed;
   z-index: 10;
 }
+#button1, #button2, #button3{
+    border-radius:2px;
+}

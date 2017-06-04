@@ -104,7 +104,7 @@ class UserSerializer(ServiceSerializer):
         model = User
         read_only_fields = ('id', )
         fields = (
-            'id', 'email', 'username', 'password', 'sex', 'phone', 'dob',
+            'id', 'email', 'username', 'password', 'first_name', 'last_name', 'sex', 'phone', 'dob',
             'date_joined', 'manager_id', 'is_superuser', 'is_staff', 'user_type','is_disabled',
         )
         extra_kwargs = {'password': {'write_only': True, 'hidden': True}}

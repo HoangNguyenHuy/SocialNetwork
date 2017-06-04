@@ -48,7 +48,7 @@
 					<button class="btn btn-success dropdown-toggle navbar-btn" type="button" data-toggle="dropdown">Mới <span class="caret"></span></button>
 					<ul class="dropdown-menu">
 						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">Post</button></li>
-						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModals" data-whatever="@getbootstrap">Upload File</button></li>
+						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModals" data-whatever="@getbootstrap">Upoad File</button></li>
 					</ul>
 					<a id="clear">Đăng xuất</a>
 				</div>
@@ -144,34 +144,52 @@
 										<image id="profileImage" src="image/member.jpg" />
 									</div>
 									<input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required="" capture>
-									<form class="form-horizontal" role="form">
+									<form id = "upload_infor" class="form-horizontal" role="form">
 									  <div class="form-group">
-										<label for="inputUser" class="col-sm-2 control-label">Tên tài khoản</label>
+										<label for="username" class="col-sm-2 control-label">Tên tài khoản</label>
 										<div class="col-sm-10">
-										  <input type="email" class="form-control" id="inputUser" placeholder="Email" readonly>
+										  <input type="text" class="form-control" id="username" placeholder="User name" readonly>
+										</div>
+									  </div>
+										<div class="form-group">
+										<label for="dob" class="col-sm-2 control-label">Ngày sinh</label>
+										<div class="col-sm-10">
+										  <input type="text" class="form-control" id="dob" placeholder="YYYY - MM - DD" readonly>
 										</div>
 									  </div>
 									  <div class="form-group">
-										<label for="inputFullname" class="col-sm-2 control-label">Tên đầy đủ</label>
+										<label for="first_name" class="col-sm-2 control-label">Họ lót</label>
 										<div class="col-sm-10">
-										  <input type="password" class="form-control" id="inputFullname" placeholder="Password" readonly>
+										  <input type="text" class="form-control" id="first_name" placeholder="firstname" readonly>
+										</div>
+									  </div>
+										<div class="form-group">
+										<label for="last_name" class="col-sm-2 control-label">Tên</label>
+										<div class="col-sm-10">
+										  <input type="text" class="form-control" id="last_name" placeholder="lastname" readonly>
 										</div>
 									  </div>
 									  <div class="form-group">
-										<label for="inputPhone" class="col-sm-2 control-label">Điện thoại</label>
+										<label for="phone" class="col-sm-2 control-label">Điện thoại</label>
 										<div class="col-sm-10">
-										  <input type="phone" class="form-control" id="inputPhone" placeholder="Phone" readonly>
+										  <input type="phone" class="form-control" id="phone" placeholder="Phone" readonly>
 										</div>
 									  </div>
 									  <div class="form-group">
-										<label for="inputPassword" class="col-sm-2 control-label">Mật khẩu</label>
+										<label for="password" class="col-sm-2 control-label">Mật khẩu</label>
 										<div class="col-sm-10">
-										  <input type="password" class="form-control" id="inputPassword" placeholder="Password" readonly>
+										  <input type="password" class="form-control" id="password" placeholder="Password" readonly>
+										</div>
+									  </div>
+										<div class="form-group">
+										<label for="email" class="col-sm-2 control-label">Email</label>
+										<div class="col-sm-10">
+										  <input type="email" class="form-control" id="email" placeholder="Email" readonly>
 										</div>
 									  </div>
 										<div class="button-container">
 											<a id="button1" onclick="SwitchButtons('button1');" >Click để cập nhật</a>
-											<button id="button3" class="sideviewtoggle myButton" style='display:none;'>Cập nhật</button>
+											<button id="button3" type="submit" class="sideviewtoggle myButton" style='display:none;'>Cập nhật</button>
 											<button id="button2" onclick="SwitchButtons('button2');" style='display:none;'>Back</button>
 										</div>
 									</form>
@@ -207,5 +225,6 @@
 <script src="js/test.js"></script>
 <script src="js/index.js"></script>
 <script src="js/main.js"></script>
+<script src="js/information.js"></script>
 </body>
 </html>

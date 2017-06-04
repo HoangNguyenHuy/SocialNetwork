@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0347258e-bc5b-4d68-831b-3debab4762c1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/DataSharing/profile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataSharing/file.html" afterPath="$PROJECT_DIR$/DataSharing/file.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataSharing/historydownload.html" afterPath="$PROJECT_DIR$/DataSharing/historydownload.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataSharing/information.html" afterPath="$PROJECT_DIR$/DataSharing/information.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataSharing/main.html" afterPath="$PROJECT_DIR$/DataSharing/main.html" />
     </list>
@@ -25,8 +21,8 @@
       <file leaf-file-name="information.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataSharing/information.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="142" column="37" lean-forward="true" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
+            <state relative-caret-position="631">
+              <caret line="100" column="124" lean-forward="false" selection-start-line="100" selection-start-column="124" selection-end-line="100" selection-end-column="124" />
               <folding>
                 <element signature="n#style#0;n#button#0;n#div#7;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -34,10 +30,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profile.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataSharing/profile.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11925">
+            <state relative-caret-position="12780">
               <caret line="1002" column="26" lean-forward="false" selection-start-line="1002" selection-start-column="26" selection-end-line="1002" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -67,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataSharing/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2010">
-              <caret line="164" column="24" lean-forward="true" selection-start-line="164" selection-start-column="24" selection-end-line="164" selection-end-column="24" />
+            <state relative-caret-position="233">
+              <caret line="57" column="20" lean-forward="false" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -90,9 +86,12 @@
       <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataSharing/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1034">
-              <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="435">
+              <caret line="98" column="126" lean-forward="true" selection-start-line="98" selection-start-column="106" selection-end-line="98" selection-end-column="126" />
+              <folding>
+                <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -135,6 +134,7 @@
       <find>targets_file_input</find>
       <find>'&lt;/div&gt;'</find>
       <find>'</find>
+      <find>submit</find>
     </findStrings>
     <replaceStrings>
       <replace>content</replace>
@@ -171,11 +171,11 @@
         <option value="$PROJECT_DIR$/DataSharing/js/main.js" />
         <option value="$PROJECT_DIR$/DataSharing/js/file.js" />
         <option value="$PROJECT_DIR$/DataSharing/js/SwitchButtons.js" />
-        <option value="$PROJECT_DIR$/DataSharing/main.html" />
         <option value="$PROJECT_DIR$/DataSharing/file.html" />
         <option value="$PROJECT_DIR$/DataSharing/historydownload.html" />
-        <option value="$PROJECT_DIR$/DataSharing/information.html" />
         <option value="$PROJECT_DIR$/DataSharing/profile.html" />
+        <option value="$PROJECT_DIR$/DataSharing/main.html" />
+        <option value="$PROJECT_DIR$/DataSharing/information.html" />
       </list>
     </option>
   </component>
@@ -832,16 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataSharing/information.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="406">
-          <caret line="142" column="37" lean-forward="true" selection-start-line="142" selection-start-column="37" selection-end-line="142" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#7;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataSharing/file.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -850,17 +840,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DataSharing/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="57" column="20" lean-forward="false" selection-start-line="57" selection-start-column="14" selection-end-line="57" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DataSharing/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1034">
-          <caret line="49" column="25" lean-forward="true" selection-start-line="49" selection-start-column="25" selection-end-line="49" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="435">
+          <caret line="98" column="126" lean-forward="true" selection-start-line="98" selection-start-column="106" selection-end-line="98" selection-end-column="126" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataSharing/information.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="100" column="124" lean-forward="false" selection-start-line="100" selection-start-column="124" selection-end-line="100" selection-end-column="124" />
+          <folding>
+            <element signature="n#style#0;n#button#0;n#div#7;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DataSharing/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11925">
+        <state relative-caret-position="12780">
           <caret line="1002" column="26" lean-forward="false" selection-start-line="1002" selection-start-column="26" selection-end-line="1002" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -876,14 +887,6 @@
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#0;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#1;n#div#0;n#div#1;n#div#5;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataSharing/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2010">
-          <caret line="164" column="24" lean-forward="true" selection-start-line="164" selection-start-column="24" selection-end-line="164" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>

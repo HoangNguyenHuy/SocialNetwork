@@ -44,7 +44,7 @@
 					</li>
 				</ul>
 				<div class="navbar-right">
-				<button class="btn btn-success dropdown-toggle navbar-btn" type="button" data-toggle="dropdown">Mới <span class="caret"></span></button>
+					<button class="btn btn-success dropdown-toggle navbar-btn" type="button" data-toggle="dropdown">Mới <span class="caret"></span></button>
 					<ul class="dropdown-menu">
 						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">Post</button></li>
 						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModals" data-whatever="@getbootstrap">Upload File</button></li>
@@ -65,13 +65,14 @@
 										  <textarea rows="3" class="form-control" id="content" name="content" placeholder="Bạn muốn nói gì..."></textarea>
 									  </div>
 								  </div>
-								   <div class="form-group">
-										<div action="/file-upload" class="dropzone" id="my-awesome-dropzone"></div>
+								  <div class="form-group">
+										<div action="/" class="dropzone" id="my-awesome-dropzone"></div>
 									  	<button class="btn btn-send btn-success" id="submit" name="submit" onclick="load_page()">Chia Sẻ</button>
-										<select class="selectpicker">
+										<select class="selectpicker" id="status">
 										  <option>Công khai</option>
 										  <option>Bạn bè</option>
-										  <option>Mình tôi</option>
+										  <option>Chỉ mình tôi</option>
+										  <option>Tùy chỉnh</option>
 										</select>
 									  	<a href="#"><span id="gl" class="glyphicon glyphicon-tag"></span></a>
 								  </div>
@@ -88,22 +89,28 @@
 							<h4 class="modal-title" style="text-align: center;">Upload file</h4>
 						</div>
 						<div class="modal-body">
-							<form id="targets" name="targets" role="form" class="form-horizontal" method="POST" enctype="multipart/form-data" >
+							<form id="targets" role="form" class="form-horizontal"
+								  method="POST" enctype="multipart/form-data" >
 								<div class="form-group">
-									<div action="/file-upload" class="dropzone" id="my-awesome-dropzone"></div>
-									<button class="btn btn-send btn-success" id="submits" name="submits">Upload</button>
+									<div class="custome-dropzone">
+										<input type="file" name="file" id="targets_file_input" />
+										<div id="upload_preview"></div>
+									</div>
+
+									<button class="btn btn-send btn-success" id="submits" name="submit">Upload</button>
 									<select class="selectpicker">
-										  <option>Công khai</option>
-										  <option>Bạn bè</option>
-										  <option>Mình tôi</option>
-										</select>
+									  <option>Công khai</option>
+									  <option>Bạn bè</option>
+									  <option>Chỉ mình tôi</option>
+									  <option>Tùy chỉnh</option>
+									</select>
 								</div>
 							</form>
 						</div>
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div>
-			</div>
+		</div>
 		</div>
 	</nav>
 	<div id="wrapper" class="table_file">

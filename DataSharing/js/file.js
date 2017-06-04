@@ -1,5 +1,5 @@
 var API_endpoint = "http://127.0.0.1:8080/api/v1/";
-var t=0;
+var t=1;
 var htmlText ='<thead>'
         +   '<tr>'
         +      '<th>STT</th>'

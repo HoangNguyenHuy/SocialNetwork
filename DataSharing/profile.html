@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title> Index </title>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet" />
+ 	<link href="css/style.css" type="text/css" rel="stylesheet"/>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/dropzone.css" />
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/dropzone.js"></script>
+</head>
+<body>
+<div id="request">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+					<span class="sr-only">Menu</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="main.html">ShareFile.com</a>
+			</div>
+			<div class="collapse navbar-collapse" id="menu">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="main.html"><span class="glyphicon glyphicon-home"></span> Trang chủ</a>
+					</li>
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-globe"></span> Thông báo</a>
+					</li>
+					<li>
+						<a href="#"><span class="glyphicon glyphicon-envelope"></span> Tin nhắn</a>
+					</li>
+					<li>
+						<a href="file.html"><span class="glyphicon glyphicon-folder-open"></span> File</a>
+					</li>
+				</ul>
+				<div class="navbar-right">
+					<button class="btn btn-success dropdown-toggle navbar-btn" type="button" data-toggle="dropdown">Mới <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">Post</button></li>
+						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModals" data-whatever="@getbootstrap">Upload File</button></li>
+					</ul>
+					<a id="clear">Đăng xuất</a>
+				</div>
+				<div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+				  <div class="modal-dialog">
+					  <div class="modal-content">
+						  <div class="modal-header">
+							  <button aria-hidden="true" data-dismiss="modal" class="close" type="button"></button>
+							  <h4 class="modal-title" style="text-align: center;">Đăng bài...</h4>
+						  </div>
+						  <div class="modal-body">
+							  <form id="target" name="target" role="form" class="form-horizontal" method="POST" enctype="multipart/form-data" >
+								  <div class="form-group">
+									  <div class="col-lg-12">
+										  <textarea rows="3" class="form-control" id="content" name="content" placeholder="Bạn muốn nói gì..."></textarea>
+									  </div>
+								  </div>
+								  <div class="form-group">
+										<div action="/" class="dropzone" id="my-awesome-dropzone"></div>
+									  	<button class="btn btn-send btn-success" id="submit" name="submit" onclick="load_page()">Chia Sẻ</button>
+										<select class="selectpicker" id="status">
+										  <option>Công khai</option>
+										  <option>Bạn bè</option>
+										  <option>Chỉ mình tôi</option>
+										  <option>Tùy chỉnh</option>
+										</select>
+									  	<a href="#"><span id="gl" class="glyphicon glyphicon-tag"></span></a>
+								  </div>
+							  </form>
+						  </div>
+					  </div><!-- /.modal-content -->
+				  </div><!-- /.modal-dialog -->
+			  </div>
+			  <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModals" class="modal fade" style="display: none;">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button aria-hidden="true" data-dismiss="modal" class="close" type="button"></button>
+							<h4 class="modal-title" style="text-align: center;">Upload file</h4>
+						</div>
+						<div class="modal-body">
+							<form id="targets" role="form" class="form-horizontal"
+								  method="POST" enctype="multipart/form-data" >
+								<div class="form-group">
+									<div class="custome-dropzone">
+										<input type="file" name="file" id="targets_file_input" />
+										<div id="upload_preview"></div>
+									</div>
+
+									<button class="btn btn-send btn-success" id="submits" name="submit">Upload</button>
+									<select class="selectpicker">
+									  <option>Công khai</option>
+									  <option>Bạn bè</option>
+									  <option>Chỉ mình tôi</option>
+									  <option>Tùy chỉnh</option>
+									</select>
+								</div>
+							</form>
+						</div>
+					</div><!-- /.modal-content -->
+				</div><!-- /.modal-dialog -->
+			</div>
+		</div>
+		</div>
+	</nav>
+	<div id="wrapper">
+			   <!-- /. NAV TOP  -->
+			<nav class="navbar-default navbar-side fixed" role="navigation">
+				<div class="sidebar-collapse">
+					<ul class="nav" id="main-menu">
+						<li class="text-center">
+						<a href="information.html"><img src="image/member.jpg" class="user-image img-responsive"/></a>
+						</li>
+						<li>
+							<a  href="profile.html"><i class="glyphicon glyphicon-user"><span class="glyphicons glyphicons-group"></span></i> Trang Cá Nhân</a>
+						</li>
+						<li>
+							<a  href="#"><i class="glyphicon glyphicon-list"></i> Bạn Bè</a>
+						</li>
+						<li>
+							<a href="historydownload.html"><i class="glyphicon glyphicon-download-alt"></i> Lịch Sử Download</a>
+						</li>
+					</ul>
+				   
+				</div>
+				
+			</nav>  
+			<!-- /. NAV SIDE  -->
+			<div id="page-wrapper" >
+				<div id="page-inner">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-success post panel-shadow">
+                                <div class="post-heading">
+                                    <div class="pull-left image">
+                                        <img src="image/member.jpg" class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="pull-left meta">
+                                        <div class="title h5">
+                                            <a href="#"><b>user04</b></a> đã chia sẽ một bài.
+                                        </div>
+                                        <h6 class="text-muted time">  4-4-2017 11:10:03 am </h6>
+                                    </div>
+                                </div>
+                                <div class="panel-description">
+                                    <p style="margin-left: 20px;">this is my post </p>
+                                </div>
+                                <div class="icon">
+                                    <a href="#"><span class="glyphicon glyphicon-heart"></span> Thích</a>
+                                    <a data-toggle="collapse" data-target="#item.id"><span class="glyphicon glyphicon-pencil"></span> Bình luận</a>
+                                    <a href="#"><span class="glyphicon glyphicon-share-alt"></span> Chia sẻ</a>
+                                </div>
+                                <div class="post-footer">
+                                    <div class="input-group">
+                                        <input class="form-control" placeholder="Add a comment" type="text">
+                                         <span class="input-group-addon">
+                                            <a href="#"><i class="fa fa-edit"></i></a>
+                                        </span>
+                                    </div>
+                                    <ul id="item.id" class="collapse" class="comments-list">
+                                        <li class="comment">
+                                            <a class="pull-left" href="#">
+                                                <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                            </a>
+                                            <div class="comment-body">
+                                                <div class="comment-heading">
+                                                    <h4 class="user">Huy Hoang Nguyen</h4>
+                                                     <h5 class="time">5 minutes ago</h5>
+                                                </div>
+                                                <p>Yes, I like it !</p>
+                                            </div>
+                                            <ul class="comments-list">
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/member.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">MungPham</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, thanks you</p>
+                                                    </div>
+                                                </li>
+                                                <li class="comment">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="avatar" src="image/user_1.jpg" alt="avatar">
+                                                    </a>
+                                                    <div class="comment-body">
+                                                        <div class="comment-heading">
+                                                            <h4 class="user">Huy Hoang Nguyen</h4>
+                                                            <h5 class="time">3 minutes ago</h5>
+                                                        </div>
+                                                        <p>oh, No problem :)</p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				 <!-- /. PAGE INNER  -->
+				</div>
+			 <!-- /. PAGE WRAPPER  -->
+			</div>
+</div>
+<script src='js/jquery.min.js'></script>
+<script src="js/API.js"></script>
+<script src="js/test.js"></script>
+<script src="js/index.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

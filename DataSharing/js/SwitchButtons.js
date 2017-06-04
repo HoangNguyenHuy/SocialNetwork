@@ -1,4 +1,4 @@
-function SwitchButtons(buttonId) {
+function removebutton(buttonId) {
   var hideBtn, hideBt, showBtn, showBtn1;
   if (buttonId == 'button1') {
     showBtn = 'button2';
@@ -15,13 +15,13 @@ function SwitchButtons(buttonId) {
     showBtn = 'button1';
     document.getElementById('button3').style.display = 'none';
     hideBtn = 'button2';
-    
+    window.location.assign(window.location.href);
   }
   //I don't have your menus, so this is commented out.  just uncomment for your usage
   // document.getElementById(menuToggle).toggle(); //step 1: toggle menu
   document.getElementById(hideBtn).style.display = 'none'; //step 2 :additional feature hide button
   
-  document.getElementById(showBtn).style.display = ''; 
+  document.getElementById(showBtn).style.display = '';
   document.getElementById(showBtn1).style.display = ''; //step 3:additional feature show button
   
 }

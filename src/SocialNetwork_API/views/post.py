@@ -116,3 +116,20 @@ class PostViewSet(BaseViewSet):
                 data['content'] = post.content
 
         return data
+
+    @list_route(methods=['post'], permission_classes=(permissions.AllowAny,))
+    def add_post(self, request, *args, **kwargs):
+        try:
+            data = request.data.copy()
+            serializer = PostSerializer(data=data)
+            serializer.is_valid(raise_exception=True)
+
+            post = serializer.save()
+            post_data = post.__dict__
+            if '_state' in post_data:
+                del post_data['_state']
+
+            return Response(post_data, status=status.HTTP_200_OK)
+
+        except Exception as exception:
+            raise exception

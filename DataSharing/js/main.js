@@ -1,6 +1,6 @@
 var API_endpoint = "http://127.0.0.1:8080/api/v1/";
 var t=1;
-Dropzone.autoDiscover = false;
+//Dropzone.autoDiscover = false;
 var uploadFileFormData = null;
 
 // clear all the local storage- Logout
@@ -31,15 +31,15 @@ function loadPostData() {
        // Error handle
 	});
 }
-
-function initDropzone() {
-    var myDropzone = new Dropzone("#upload-dropzone");
-    uploadFileFormData = new FormData("#upload-dropzone");
-    myDropzone.on("addedfile", function(file) {
-
-        uploadFileFormData.append('file', file);
-    });
-}
+//
+//function initDropzone() {
+//    var myDropzone = new Dropzone("#upload-dropzone");
+//    uploadFileFormData = new FormData("#upload-dropzone");
+//    myDropzone.on("addedfile", function(file) {
+//
+//        uploadFileFormData.append('file', file);
+//    });
+//}
 
 
 $('#target').submit(function(e) {
@@ -69,9 +69,9 @@ $('#targets').submit(function(e) {
 		// Error handle
 	});
 });
-$("#myModals").on('show.bs.modal',function() {
-    console.log('show modal');
-})
+//$("#myModals").on('show.bs.modal',function() {
+//    console.log('show modal');
+//})
 $("#targets_file_input").on('change', function(e) {
 
     handlePreviewUpload(this.files);

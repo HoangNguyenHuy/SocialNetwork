@@ -48,7 +48,7 @@
 					<button class="btn btn-success dropdown-toggle navbar-btn" type="button" data-toggle="dropdown">Mới <span class="caret"></span></button>
 					<ul class="dropdown-menu">
 						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModal" data-whatever="@getbootstrap">Post</button></li>
-						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModals" data-whatever="@getbootstrap">Upload File</button></li>
+						  <li><button class="btn btn-link" data-toggle="modal" data-target="#myModals" data-whatever="@getbootstrap">Upoad File</button></li>
 					</ul>
 					<a id="clear">Đăng xuất</a>
 				</div>
@@ -66,14 +66,13 @@
 										  <textarea rows="3" class="form-control" id="content" name="content" placeholder="Bạn muốn nói gì..."></textarea>
 									  </div>
 								  </div>
-								  <div class="form-group">
-										<div action="/" class="dropzone" id="my-awesome-dropzone"></div>
+								   <div class="form-group">
+										<div action="/file-upload" class="dropzone" id="my-awesome-dropzone"></div>
 									  	<button class="btn btn-send btn-success" id="submit" name="submit" onclick="load_page()">Chia Sẻ</button>
-										<select class="selectpicker" id="status">
+										<select class="selectpicker">
 										  <option>Công khai</option>
 										  <option>Bạn bè</option>
-										  <option>Chỉ mình tôi</option>
-										  <option>Tùy chỉnh</option>
+										  <option>Mình tôi</option>
 										</select>
 									  	<a href="#"><span id="gl" class="glyphicon glyphicon-tag"></span></a>
 								  </div>
@@ -90,28 +89,31 @@
 							<h4 class="modal-title" style="text-align: center;">Upload file</h4>
 						</div>
 						<div class="modal-body">
-							<form id="targets" role="form" class="form-horizontal"
-								  method="POST" enctype="multipart/form-data" >
+							<form id="targets" name="targets" role="form" class="form-horizontal" method="POST" enctype="multipart/form-data" >
 								<div class="form-group">
+<<<<<<< HEAD
 									<div class="custome-dropzone">
 										<input type="file" name="file" id="targets_file_input" />
 										<div id="upload_preview"></div>
 									</div>
 
 									<button class="btn btn-send btn-success" id="submits" name="submit" onclick="load_page()>Upload</button>
+=======
+									<div action="/file-upload" class="dropzone" id="my-awesome-dropzone"></div>
+									<button class="btn btn-send btn-success" id="submits" name="submits">Upload</button>
+>>>>>>> f7e9f5a50b0661f5e588bec352bdbe9bf8e66df7
 									<select class="selectpicker">
-									  <option>Công khai</option>
-									  <option>Bạn bè</option>
-									  <option>Chỉ mình tôi</option>
-									  <option>Tùy chỉnh</option>
-									</select>
+										  <option>Công khai</option>
+										  <option>Bạn bè</option>
+										  <option>Mình tôi</option>
+										</select>
 								</div>
 							</form>
 						</div>
 					</div><!-- /.modal-content -->
 				</div><!-- /.modal-dialog -->
 			</div>
-		</div>
+			</div>
 		</div>
 	</nav>
 	<div id="wrapper">
@@ -195,9 +197,9 @@
 										</div>
 									  </div>
 										<div class="button-container">
-											<a id="button1" onclick="removebutton('button1');" >Click để cập nhật</a>
+											<a id="button1" onclick="SwitchButtons('button1');" >Click để cập nhật</a>
 											<button id="button3" type="submit" class="sideviewtoggle myButton" style='display:none;'>Cập nhật</button>
-											<button id="button2" onclick="removebutton('button2');" style='display:none;'>Back</button>
+											<button id="button2" onclick="SwitchButtons('button2');" style='display:none;'>Back</button>
 										</div>
 									</form>
 								</div>
@@ -211,6 +213,22 @@
 			 <!-- /. PAGE WRAPPER  -->
 			</div>
 </div>
+<SCRIPT LANGUAGE = "Javascript">
+	$("#profileImage").click(function(e) {
+		$("#imageUpload").click();
+	});
+
+	function fasterPreview( uploader ) {
+		if ( uploader.files && uploader.files[0] ){
+			  $('#profileImage').attr('src',
+				 window.URL.createObjectURL(uploader.files[0]) );
+		}
+	}
+
+	$("#imageUpload").change(function(){
+		fasterPreview( this );
+	});
+</SCRIPT>
 <script src='js/jquery.min.js'></script>
 <script src="js/API.js"></script>
 <script src="js/test.js"></script>

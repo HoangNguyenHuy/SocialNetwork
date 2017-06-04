@@ -13,7 +13,12 @@ $('.close').on('click', function() {
 
 $("#form_login").submit(function(e) {
 	e.preventDefault();
-	var form_data = $(this).serialize();
+	//var form_data = $(this).serialize();
+	var form_data = {
+	    username: $(this).find("[name='username']").val(),
+	    password: $(this).find("[name='password']").val(),
+	}
+
 	
 	API.send('auth', 'post', form_data, function(res) {
 		// Success reponse handle

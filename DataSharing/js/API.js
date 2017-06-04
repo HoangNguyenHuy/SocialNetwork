@@ -11,10 +11,18 @@ var API = {
 		    authToken = JSON.parse(localStorage.getItem('token'));
 		} catch(e) {}
 		
-		var headerConfig = {		
-			  "Content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-			   'Accept': 'application/json',
+		var headerConfig = {
+//		      'Content-type': "application/x-www-form-urlencoded; charset=UTF-8",
+			  'Accept': 'application/json',
 		};
+		if (method.toLowerCase() !== 'get' && data) {
+
+            if (Object.prototype.toString.call(data) !== '[object FormData]') {
+                headerConfig['Content-type'] = 'application/json; charset=utf-8';
+                data = JSON.stringify(data);
+            }
+
+        }
 		if (authToken) {
 			headerConfig['Authorization'] = 'token ' + authToken.token;
 		}

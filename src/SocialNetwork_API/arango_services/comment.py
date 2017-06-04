@@ -18,3 +18,15 @@ class ArangoCommentService(ArangoBaseService):
             return True
         except Exception as exception:
             raise exception
+
+    @classmethod
+    def get_commnet(cls, post_id):
+        post_id = 'sn_posts/' + str(post_id)
+        query_string = "FOR comment IN OUTBOUND @post_id sn_post_comment " \
+                       "SORT comment.created_at ASC " \
+                       "LET user = (FOR user IN sn_users FILTER user._key == TO_STRING(comment.user_id) LIMIT 1  " \
+                       "RETURN user)[0] " \
+                       "RETURN merge(comment,{user})"
+        parameter = {'post_id': post_id}
+        result = ArangoCore.execute_query(query_string, parameter)
+        return result

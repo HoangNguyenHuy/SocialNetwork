@@ -1,4 +1,5 @@
 from rest_framework import exceptions
+from rest_framework.decorators import list_route
 from rest_framework.response import Response
 from rest_framework import status
 
@@ -7,6 +8,9 @@ from SocialNetwork_API.views import BaseViewSet
 from SocialNetwork_API.services import CommentService
 from SocialNetwork_API.exceptions import ServiceException
 from SocialNetwork_API.models import *
+
+from SocialNetwork_API import permissions
+
 
 class CommentViewSet(BaseViewSet):
     view_set = 'comment'
@@ -66,6 +70,18 @@ class CommentViewSet(BaseViewSet):
             queryset = Comment.objects.all().filter(post_id=3)
             serializer = CommentSerializer(queryset, many=True)
             return Response(serializer.data)
+
+        except Exception as exception:
+            raise exception
+
+    @list_route(methods=['post', 'put'], permission_classes=(permissions.IsAuthenticated,))
+    def get_comment_of_post(self, request):
+        try:
+            data = CommentService.get_comment(request.data.get('post_id'))
+            # post_id = request.data.get('post_id')
+            # queryset = Comment.objects.all().filter(post_id=post_id)
+            # serializer = CommentSerializer(queryset, many=True)
+            return Response(data)
 
         except Exception as exception:
             raise exception

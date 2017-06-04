@@ -29,7 +29,9 @@ class ArangoPostService(ArangoBaseService):
         query_string = "FOR post IN 1..2 OUTBOUND @user_id sn_friend, sn_user_post " \
                        "FILTER post.user_type == NULL " \
                        "SORT post.created_at DESC " \
-                       "RETURN post"
+                       "LET user = (FOR user IN sn_users FILTER user._key == TO_STRING(post.user_id) LIMIT 1 " \
+                       "RETURN user)[0] " \
+                       "RETURN merge(post,{user})"
         #query with vertex and edge
         # query_string = "LET friends = (" \
         #                "FOR user IN OUTBOUND @user_id sn_friend OPTIONS {bfs: true, uniqueVertices: 'global'} " \

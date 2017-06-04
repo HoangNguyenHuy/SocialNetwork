@@ -30,10 +30,9 @@ class CommentService(BaseService):
     @classmethod
     def get_comment(cls, post_id):
         try:
-            queryset = Comment.objects.all()
-            comment = get_object_or_404(queryset, pk=post_id)
-
-            return comment
+            # queryset = Comment.objects.all()
+            # comment = get_object_or_404(queryset, pk=post_id)
+            return ArangoCommentService.get_commnet(post_id)
 
         except Exception as exception:
             # cls.log_exception(exception)  # cái này là cái gì

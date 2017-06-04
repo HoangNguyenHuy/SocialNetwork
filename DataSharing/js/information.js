@@ -11,8 +11,9 @@ $(window).load(function(){
 //});
 
 function loadInformationUser(item) {
+    token = JSON.parse(localStorage.getItem("token"));
 	console.log('Load Information User');
-	API.send('user/11', 'get', null, function(res) {
+	API.send('user/'+token.user_id, 'get', null, function(res) {
 		// Success reponse handle
 		$('#username').val(res.username);
 		$('#dob').val(res.dob);
@@ -28,19 +29,18 @@ function loadInformationUser(item) {
 
 $('#upload_infor').submit(function (e){
     e.preventDefault();
-	var form_data = $(this).serialize();
-console.log(form_data);
-//	API.send('user/11', 'put', form_data, function(res) {
-//	    //success
-////	    res.username = document.getElementById("username").value;
-////	    res.dob = document.getElementById("dob").value;
-////	    res.first_name = document.getElementById("first_name").value;
-////	    res.last_name = document.getElementById("last_name").value;
-////	    res.phone = document.getElementById("phone").value;
-////	    res.password = document.getElementById("password").value;
-////	    res.email = document.getElementById("email").value;
-//	    console.log(res);
-//	}, function(err){
-//        // Error handle
-//	});
+    var form_data = {
+	    password: document.getElementById("password").value,
+	    email: document.getElementById("email").value,
+	    dob: document.getElementById("dob").value,
+	    first_name: document.getElementById("first_name").value,
+	    last_name: document.getElementById("last_name").value,
+	    phone: document.getElementById("phone").value,
+	}
+	API.send('user/'+token.user_id, 'put', form_data, function(res) {
+	    //success
+	    console.log(res);
+	}, function(err){
+        // Error handle
+	});
 })

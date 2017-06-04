@@ -46,9 +46,11 @@ class UserViewSet(BaseViewSet):
     def update(self, request, pk=None, *args, **kwargs):
         try:
             user = UserService.get_user(pk)
-            serializer = self.serializer_class(instance=user, data=request.data)
+            if user.id != request.user.id:
+                raise exceptions.PermissionDenied()
+            serializer = self.serializer_class(instance=user, data=request.data, partial=True)
             serializer.is_valid(raise_exception=True)
-            serializer.save()
+            serializer = UserSerializer(serializer.save())
 
             return Response(serializer.data)
 

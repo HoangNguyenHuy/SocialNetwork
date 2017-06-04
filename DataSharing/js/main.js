@@ -44,11 +44,12 @@ function loadPostData() {
 
 $('#target').submit(function(e) {
 	e.preventDefault();
-	var form_data = $(this).serialize();
+	var form_data = {
+	    content: $(this).find("[id='content']").val(),
+	}
 
 	API.send('post','post', form_data, function(res) {
 		// Success reponse handle
-//		console.log(res);
 	}, function(err){
 		// Error handle
 	});
@@ -101,6 +102,17 @@ function handlePreviewUpload(files) {
 
 function renderPostItem(item) {
     var htmlText =''
+    var form_data = {
+	    post_id: item.id
+	}
+    API.send('comment/get_comment_of_post','post', form_data, function(res) {
+		// Success reponse handle
+		console.log(res);
+	}, function(err){
+		// Error handle
+	});
+
+
     if (t==0){htmlText+= '<div class="row">';}
     // thie lap lai time post = timenow - created_at
 //    getComment(item.id);
@@ -115,7 +127,7 @@ function renderPostItem(item) {
     +                    '<div class="title h5">'
     +                        '<a href="#"><b>'+item.user.username+'</b></a> đã chia sẽ một bài.'
     +                    '</div>'
-    +                    '<h6 class="text-muted time">' + item.created_at + '</h6>'
+    +                    '<h6 class="text-muted time">' +jQuery.timeago(item.created_at)+ '</h6>'
     +                '</div>'
     +            '</div>'
     +            '<div class="panel-description">'
@@ -180,12 +192,15 @@ function renderPostItem(item) {
     $('#page').append(htmlText);
 }
 
-function getComment(post_id){
-data= 'post_id:'+post_id;
-    API.send('comment/get_comment_of_post','post', data, function(res) {
-		// Success reponse handle
-//		console.log(res);
-	}, function(err){
-		// Error handle
-	});
-}
+//function getComment(post){
+//
+//    var form_data = {
+//	    post_id: post
+//	}
+//    API.send('comment/get_comment_of_post','post', form_data, function(res) {
+//		// Success reponse handle
+////		console.log(res);
+//	}, function(err){
+//		// Error handle
+//	});
+//}

@@ -13,6 +13,22 @@ var htmlText ='<thead>'
         +'</thead>'
         +'<tbody>';
 
+$.date = function(dateObject) {
+        var d = new Date(dateObject);
+        var day = d.getDate();
+        var month = d.getMonth() + 1;
+        var year = d.getFullYear();
+        if (day < 10) {
+            day = "0" + day;
+        }
+        if (month < 10) {
+            month = "0" + month;
+        }
+        var date = day + "/" + month + "/" + year;
+
+        return date;
+    };
+
 
 $(window).load(function(){
 	loadFileData();
@@ -51,7 +67,7 @@ function renderFileItem(item) {
         +   '<tr>'
         +        '<td>'+t+'</td>'
         +        '<td>'+item.name+'</td>'
-        +        '<td>'+item.created_at+'</td>'
+        +        '<td>'+$.date(item.created_at)+'</td>'
         +        '<td>'+x+ ' '+str_dv+'</td>'
         +        '<td><a href="#" onClick="downloadFile('+ item.id+')">Tải</a></td>'
         +        '<td><a href="#">Xóa</a></td>'

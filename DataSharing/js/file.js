@@ -86,6 +86,10 @@ function downloadFile(id) {
     API.send('data/download', 'post', form_data, function(res) {
 		// Success reponse handle
 		console.log(res);
+		document.getElementById('my_iframe').src = url;
+//		var pagedown = window.open(res);
+//        pagedown.location;
+//		window.open(res);
 //		download(res,"dm.jpg","jpg" );
 		download(res, this.files[0].name, this.files[0].type);
 	}, function(err){

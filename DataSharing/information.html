@@ -89,24 +89,21 @@
 							<h4 class="modal-title" style="text-align: center;">Upload file</h4>
 						</div>
 						<div class="modal-body">
-							<form id="targets" name="targets" role="form" class="form-horizontal" method="POST" enctype="multipart/form-data" >
+							<form id="targets" role="form" class="form-horizontal"
+								  method="POST" enctype="multipart/form-data" >
 								<div class="form-group">
-<<<<<<< HEAD
 									<div class="custome-dropzone">
 										<input type="file" name="file" id="targets_file_input" />
 										<div id="upload_preview"></div>
 									</div>
 
-									<button class="btn btn-send btn-success" id="submits" name="submit" onclick="load_page()>Upload</button>
-=======
-									<div action="/file-upload" class="dropzone" id="my-awesome-dropzone"></div>
-									<button class="btn btn-send btn-success" id="submits" name="submits">Upload</button>
->>>>>>> f7e9f5a50b0661f5e588bec352bdbe9bf8e66df7
+									<button class="btn btn-send btn-success" style="submit" name="submit" onclick="load_page()">Upload</button>
 									<select class="selectpicker">
-										  <option>Công khai</option>
-										  <option>Bạn bè</option>
-										  <option>Mình tôi</option>
-										</select>
+									  <option>Công khai</option>
+									  <option>Bạn bè</option>
+									  <option>Chỉ mình tôi</option>
+									  <option>Tùy chỉnh</option>
+									</select>
 								</div>
 							</form>
 						</div>
@@ -197,9 +194,9 @@
 										</div>
 									  </div>
 										<div class="button-container">
-											<a id="button1" onclick="SwitchButtons('button1');" >Click để cập nhật</a>
+											<a id="button1" onclick="removebutton('button1');" >Click để cập nhật</a>
 											<button id="button3" type="submit" class="sideviewtoggle myButton" style='display:none;'>Cập nhật</button>
-											<button id="button2" onclick="SwitchButtons('button2');" style='display:none;'>Back</button>
+											<button id="button2" onclick="removebutton('button2');" style='display:none;'>Back</button>
 										</div>
 									</form>
 								</div>

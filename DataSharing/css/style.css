@@ -186,6 +186,7 @@ background-color: #B40101;
 }
 .navbar-default .navbar-toggle {
 border-color: #fff;
+ position: relative;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
@@ -381,4 +382,8 @@ nav.fixed {
 }
 #button1, #button2, #button3{
     border-radius:2px;
+}
+img.preview-img{
+    width:260px;
+    height:170px;
 }

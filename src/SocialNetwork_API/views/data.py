@@ -77,8 +77,8 @@ class DataViewSet(BaseViewSet):
                     upload_file = file
                     del request.data[key]
 
-                upload_file.seek(0, 2) # move cursor from begin to end file
-                size = upload_file.tell()
+                # upload_file.seek(0, 2) # move cursor from begin to end file
+                size = upload_file.size
                 name = upload_file.name
             data = {'user_id':user.id, 'file': upload_file, 'data_status': status, 'capacity': size, 'name': name}
 

@@ -1,4 +1,3 @@
-var API_endpoint = "http://127.0.0.1:8080/api/v1/";
 var t=1;
 var htmlText ='<thead>'
         +   '<tr>'
@@ -95,8 +94,4 @@ function downloadFile(id) {
 	}, function(err){
        // Error handle
 	});
-}
-
-function getUrl(){
-//method nay dung de goi url khi user click vao 1 link
 }

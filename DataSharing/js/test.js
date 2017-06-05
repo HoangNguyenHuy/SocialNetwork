@@ -1,12 +1,7 @@
 var API_endpoint = "http://127.0.0.1:8080/api/v1/";
-
-//function load_page() {
-////    window.location.assign(window.location.href);
-//    location.reload(true);
-//}
+var x = localStorage.getItem('token');
 
 $(window).load(function(){
-    var x = localStorage.getItem('token');
 //    console.log(x);
     if (x === null) {
     window.location = 'index.html';
@@ -55,7 +50,7 @@ $('#targets').submit(function(e) {
 
 $("#targets_file_input").on('change', function(e) {
 
-//    console.log((this).files);
+    console.log((this).files);
     handlePreviewUpload(this.files);
 });
 

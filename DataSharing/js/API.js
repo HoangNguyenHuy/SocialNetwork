@@ -34,7 +34,7 @@ var API = {
 		   //cache: 'default',
 		   body: data
 		 };
-		console.log(initData);
+//		console.log(initData);
 
 		fetch(url, initData)
 		.then(function(res) {

@@ -30,7 +30,6 @@ function loadInformationUser(item) {
 $('#upload_infor').submit(function (e){
     e.preventDefault();
     var form_data = {
-	    password: document.getElementById("password").value,
 	    email: document.getElementById("email").value,
 	    dob: document.getElementById("dob").value,
 	    first_name: document.getElementById("first_name").value,

@@ -26,7 +26,7 @@ class ArangoPostService(ArangoBaseService):
         # FOR post IN 1..2 OUTBOUND @user_id sn_friend, sn_user_post
         # câu query này sẽ select theo 2 cạnh của sn_friend và sn_user_post với giá trị user_id và select hết tất cả các item select đc gồm cả user và post
         # để chỉ lấy được các post thì t phải filter ra các item có user_type == null vì post ko có user_type chỉ user mới có user_type
-        query_string = "FOR post IN 1..2 OUTBOUND @user_id sn_friend, sn_user_post " \
+        query_string = "FOR post IN 1..2 OUTBOUND @user_id sn_friend, sn_user_post OPTIONS {bfs: true, uniqueVertices: 'global'} " \
                        "FILTER post.user_type == NULL " \
                        "SORT post.created_at DESC " \
                        "LET user = (FOR user IN sn_users FILTER user._key == TO_STRING(post.user_id) LIMIT 1 " \
@@ -52,7 +52,9 @@ class ArangoPostService(ArangoBaseService):
         user_id = 'sn_users/' + str(user_id)
         query_string = "FOR post IN OUTBOUND @user_id sn_user_post OPTIONS {bfs: true, uniqueVertices: 'global'} " \
                        "SORT post.created_at DESC " \
-                       "RETURN post"
+                       "LET user = (FOR user IN sn_users FILTER user._key == TO_STRING(post.user_id) LIMIT 1 " \
+                       "RETURN user)[0] " \
+                       "RETURN merge(post,{user})"
         parameter = {'user_id': user_id}
         result = ArangoCore.execute_query(query_string, parameter)
         return result

@@ -19,34 +19,8 @@ function loadPostData() {
 
 function renderPostItem(item) {
     var htmlText =''
-//    var htmlCommentText=''
-//    var form_data = {
-//	    post_id: item.id
-//	}
-//    API.send('comment/get_comment_of_post','post', form_data, function(res) {
-//		// Success reponse handle
-//        res.map(function(item) {
-//			htmlCommentText+='<li class="comment">'
-//                            + '<a class="pull-left" href="#">'
-//                            + '<img class="avatar" src="image/member.jpg" alt="avatar">'
-//                            + '</a>'
-//                            + '<div class="comment-body">'
-//                            + '<div class="comment-heading">'
-//                            + '<h4 class="user">MungPham</h4>'
-//                            + '<h5 class="time">3 minutes ago</h5>'
-//                            + '</div>'
-//                            + '<p>oh, thanks you</p>'
-//                            + '</div>'
-//                            + '</li>';
-//		});
-//	}, function(err){
-//		// Error handle
-//	});
-
 
     if (t==0){htmlText+= '<div class="row">';}
-    // thie lap lai time post = timenow - created_at
-//    getComment(item.id);
     htmlText +=''
     +   '<div class="col-md-6">'
     +        '<div class="panel panel-success post panel-shadow">'
@@ -71,73 +45,25 @@ function renderPostItem(item) {
     +            '</div>'
     +            '<div class="post-footer">'
     +                '<div class="input-group">'
-    +                    '<input class="form-control" placeholder="Add a comment" type="text">'
-    +                     '<span class="input-group-addon">'
-    +                        '<a href="#"><i class="fa fa-edit"></i></a>'
+    +                    '<input id="input-'+item.id+'" class="form-control" placeholder="Add a comment" type="text">'
+    +                     '<span onClick="addComment('+item.id+');" style="cursor:pointer" class="input-group-addon">'
+    +                        '<a><i class="fa fa-edit"></i></a>'
     +                    '</span>'
     +                '</div>'
     +                '<ul id="'+item.id+'" class="collapse" class="comments-list">'
-//    +                    '<li class="comment">'
-//    +                        '<a class="pull-left" href="#">'
-//    +                            '<img class="avatar" src="image/user_1.jpg" alt="avatar">'
-//    +                        '</a>'
-//    +                        '<div class="comment-body">'
-//    +                            '<div class="comment-heading">'
-//    +                                '<h4 class="user">Huy Hoang Nguyen</h4>'
-//    +                                 '<h5 class="time">5 minutes ago</h5>'
-//    +                            '</div>'
-//    +                            '<p>Yes, I like it !</p>'
-//    +                        '</div>'
-    +                        '<ul class="comments-list">';
-    var form_data = {
-	    post_id: item.id,
-	}
-    API.send('comment/get_comment_of_post','post', form_data, function(res) {
-		// Success reponse handle
-        res.map(function(item) {
-//			htmlText+='<li class="comment">'
-//                            + '<a class="pull-left" href="#">'
-//                            + '<img class="avatar" src="image/member.jpg" alt="avatar">'
-//                            + '</a>'
-//                            + '<div class="comment-body">'
-//                            + '<div class="comment-heading">'
-//                            + '<h4 class="user">'+item.id+'</h4>'
-//                            + '<h5 class="time">3 minutes ago</h5>'
-//                            + '</div>'
-//                            + '<p>oh, thanks you</p>'
-//                            + '</div>'
-//                            + '</li>';
-console.log(item);
-		});
-	}, function(err){
-		// Error handle
-	});
-//    +                            '<li class="comment">'
-//    +                                '<a class="pull-left" href="#">'
-//    +                                    '<img class="avatar" src="image/member.jpg" alt="avatar">'
-//    +                                '</a>'
-//    +                                '<div class="comment-body">'
-//    +                                    '<div class="comment-heading">'
-//    +                                        '<h4 class="user">MungPham</h4>'
-//    +                                        '<h5 class="time">3 minutes ago</h5>'
-//    +                                    '</div>'
-//    +                                    '<p>oh, thanks you</p>'
-//    +                                '</div>'
-//    +                            '</li>'
-    htmlText+=                            '<li class="comment">'
-    +                                '<a class="pull-left" href="#">'
-    +                                    '<img class="avatar" src="image/user_1.jpg" alt="avatar">'
-    +                                '</a>'
-    +                                '<div class="comment-body">'
-    +                                    '<div class="comment-heading">'
-    +                                        '<h4 class="user">Huy Hoang Nguyen</h4>'
-    +                                        '<h5 class="time">3 minutes ago</h5>'
-    +                                    '</div>'
-    +                                    '<p>oh, No problem :)</p>'
-    +                                '</div>'
-    +                            '</li>'
-    +                        '</ul>'
-//    +                    '</li>'
+    +                        '<ul class="comments-list" id="comment-'+item.id+'">';
+                                var form_data = {
+                                    post_id: item.id,
+                                }
+                                API.send('comment/get_comment_of_post','post', form_data, function(res) {
+                                    // Success reponse handle
+                                    res.map(function(item2) {
+                                        renderCommentItem(item2);
+                                    });
+                                }, function(err){
+                                    // Error handle
+                                });
+    htmlText+=          '</ul>'
     +                '</ul>'
     +            '</div>'
     +        '</div>'
@@ -146,15 +72,32 @@ console.log(item);
     $('#page').append(htmlText);
 }
 
-//function getComment(post){
-//
-//    var form_data = {
-//	    post_id: post
-//	}
-//    API.send('comment/get_comment_of_post','post', form_data, function(res) {
-//		// Success reponse handle
-////		console.log(res);
-//	}, function(err){
-//		// Error handle
-//	});
-//}
+function renderCommentItem(item) {
+    var htmlCommentText=''
+        +'<li class="comment">'
+        + '<a class="pull-left" href="#">'
+        + '<img class="avatar" src="image/member.jpg" alt="avatar">'
+        + '</a>'
+        + '<div class="comment-body">'
+        + '<div class="comment-heading">'
+        + '<h4 class="user">'+item.user.username+'</h4>'
+        + '<h5 class="time">' +jQuery.timeago(item.created_at)+ '</h5>'
+        + '</div>'
+        + '<p>'+item.comment+'</p>'
+        + '</div>'
+        + '</li>';
+    $('#comment-'+item.post_id).append(htmlCommentText);
+}
+
+function addComment(id_post) {
+    var form_data = {
+	    post_id: id_post,
+	    comment: document.getElementById('input-'+id_post).value,
+	}
+	console.log(form_data);
+	API.send('comment', 'post', form_data, function(res) {
+		// Success reponse handle
+	}, function(err){
+		// Error handle
+	});
+}

@@ -22,7 +22,7 @@ class ArangoCommentService(ArangoBaseService):
     @classmethod
     def get_commnet(cls, post_id):
         post_id = 'sn_posts/' + str(post_id)
-        query_string = "FOR comment IN OUTBOUND @post_id sn_post_comment " \
+        query_string = "FOR comment IN OUTBOUND @post_id sn_post_comment OPTIONS {bfs: true, uniqueVertices: 'global'} " \
                        "SORT comment.created_at ASC " \
                        "LET user = (FOR user IN sn_users FILTER user._key == TO_STRING(comment.user_id) LIMIT 1  " \
                        "RETURN user)[0] " \

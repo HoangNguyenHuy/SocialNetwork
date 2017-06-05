@@ -109,17 +109,11 @@ div.button-container a:hover{
 div.button-container button{
 	background-color:green;
 	color:white;
-	margin-left:15px;
+
 	float:right;
 }
 .text-center {
     text-align:center;
-}
-
-p {
-    font-size:16px;
-    line-height:25px;
-    padding-top:20px;
 }
 
 .user-image {
@@ -380,10 +374,28 @@ nav.fixed {
   position: fixed;
   z-index: 10;
 }
+#button1{
+    margin-left: 30px;
+}
+#button2{
+    margin-left: 10px;
+}
 #button1, #button2, #button3{
-    border-radius:2px;
+    border-radius:5px;
 }
 img.preview-img{
     width:260px;
     height:170px;
+}
+
+h3#mainCaptcha{
+    background-color: lightgreen;
+    border: solid 1px gray;
+    margin-top:0px;
+    text-align:center;
+}
+
+button#refresh{
+	width: 40px;
+    height: 25px;
 }

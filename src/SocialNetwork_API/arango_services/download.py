@@ -8,11 +8,11 @@ class ArangoDownloadService(ArangoBaseService):
     def save_download(cls, data):
         try:
             database = ArangoCore.get_database()
-            collections = [ArangoEdge.USER_DATA]
+            collections = [ArangoEdge.USER_DOWNLOAD]
             with database.transaction(write=collections, commit_on_error=False) as transaction:
-                # Add user_post to graph edge
-                ArangoCore.add_edge_to_collection(ArangoEdge.USER_DATA, ArangoVertex.USER, data['user_id'],
-                                                  ArangoVertex.DATA, data['id'], transaction)
+                # Add user_download to graph edge
+                ArangoCore.add_user_download_to_collection(ArangoEdge.USER_DOWNLOAD, ArangoVertex.USER, data['user_id'],
+                                                  ArangoVertex.DATA, data['data_id'], transaction)
                 transaction.commit()
             return True
         except Exception as exception:
@@ -31,5 +31,15 @@ class ArangoDownloadService(ArangoBaseService):
                 transaction.commit()
 
             return True
+        except Exception as exception:
+            raise exception
+
+    @classmethod
+    def get_download_history(cls, download_id):
+        try:
+            query_string = "LET downloads =(FOR download IN sn_user_download FILTER download._key==@download_id LIMIT 1 RETURN download) RETURN downloads[0]"
+            parameter = {'download_id': download_id}
+            result = ArangoCore.execute_query(query_string, parameter)
+            return result
         except Exception as exception:
             raise exception

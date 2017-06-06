@@ -45,12 +45,6 @@ class DataViewSet(BaseViewSet):
 
         return Response(post_data, status=status.HTTP_200_OK)
 
-    @list_route(methods=['post', 'put'], permission_classes=(permissions.IsAuthenticated,))
-    def download(self, request, *args, **kwargs):
-        self.get_and_check(request)
-        url = DataService.download(request.data['data_id'])
-        return Response(url)
-
     @classmethod
     def get_and_check(cls, request):
         if 'data_id' not in request.data:
@@ -59,6 +53,8 @@ class DataViewSet(BaseViewSet):
         data = DataService.get_data(int(data_id))
         if not data:
             raise exceptions.APIException('data_id is invalid.')
+        if request.user.id != data.get('user_id'):
+            raise exceptions.PermissionDenied()
         return data
 
     def take_data_from_request(cls, request):

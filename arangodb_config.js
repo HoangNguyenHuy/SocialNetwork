@@ -44,7 +44,8 @@ function main (argv) {
 	var userPostCollectionName = "sn_user_post";
 	var postUserCollectionName = "sn_post_user"; //tag
 	var postCommentCollectionName = "sn_post_comment"; 
-	var userDataCollectionName = "sn_user_data"; //them type cho data gom 2 loai upload va download
+	var userDataCollectionName = "sn_user_data";
+	var userDownloadCollectionName = "sn_user_download";
 	var postDataCollectionName = "sn_post_data";
 	var userGroupCollectionName = "sn_user_group";
 	
@@ -60,6 +61,7 @@ function main (argv) {
 						 {'name': userGroupCollectionName, 'from': postCollectionName, 'to': groupCollectionName},
 						 {'name': postCommentCollectionName, 'from': postCollectionName, 'to': contentCommentCollectionName},
 						 {'name': postUserCollectionName, 'from': postCollectionName, 'to': userCollectionName},
+						 {'name': userDownloadCollectionName, 'from': userCollectionName, 'to': dataCollectionName},
 						 ]
 
 	//var redundantVertexCollection = []

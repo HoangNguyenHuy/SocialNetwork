@@ -429,6 +429,27 @@ class ArangoCore(object):
             return True
         except Exception as exception:
             raise exception
+
+    @classmethod
+    def add_user_download_to_collection(cls, collection_name, from_collection_name, from_collection_key, to_collection_name,
+                               to_collection_key, transaction=None):
+        try:
+            _key = '{0}-{1}-{2}'.format(from_collection_key, to_collection_key, timezone.now().strftime('%H%M%S%f%m%d%Y'))
+            _from = '{0}/{1}'.format(from_collection_name, from_collection_key)
+            _to = '{0}/{1}'.format(to_collection_name, to_collection_key)
+            data = {'_key': _key, '_from': _from, '_to': _to,
+                    'created_at': timezone.now().isoformat(), 'updated_at': timezone.now().isoformat()}
+
+            if transaction:
+                collection = transaction.collection(collection_name)
+                collection.insert(data)
+            else:
+                collection = cls.get_edge_collection(collection_name)
+                collection.insert(data)
+
+            return True
+        except Exception as exception:
+            raise exception
     # end region edge_collection
 
     @classmethod

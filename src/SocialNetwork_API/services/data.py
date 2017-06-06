@@ -1,5 +1,4 @@
 import os
-import shutil
 from os.path import join
 
 from django.db import transaction
@@ -45,21 +44,6 @@ class DataService(BaseService):
         except Exception as exception:
             cls.log_exception(exception)
             raise exception
-
-    @classmethod
-    def download(cls, data_id):
-        try:
-            file_name = ArangoDataService.get_data(int(data_id),get_name=True)
-            extension = file_name[file_name.rfind('.'):]
-            old_file_name = str(data_id) + extension
-            url_old = '{0}/{1}'.format(settings.MEDIA_ROOT, old_file_name)
-            url_new = '{0}/{1}'.format(settings.DOWNLOAD_ROOT, file_name)
-            # os.rename(url_old, url_new)
-            shutil.copy2(url_old, url_new)
-            return url_new
-
-        except Exception as e:
-            raise e
 
     @classmethod
     def get_data(cls, data_id):

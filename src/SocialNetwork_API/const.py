@@ -43,6 +43,7 @@ class ArangoVertex(const):
 class ArangoEdge(const):
     FRIEND = 'sn_friend'
     POST_DATA = 'sn_post_data'
+    USER_DOWNLOAD = 'sn_user_download'
     USER_DATA = 'sn_user_data'
     USER_GROUP = 'sn_user_group'
     USER_POST = 'sn_user_post'

@@ -68,8 +68,8 @@ function renderFileItem(item) {
         +        '<td>'+item.name+'</td>'
         +        '<td>'+$.date(item.created_at)+'</td>'
         +        '<td>'+x+ ' '+str_dv+'</td>'
-        +        '<td><a href="#" onClick="downloadFile('+ item.id+')">Tải</a></td>'
-        +        '<td><a href="#">Xóa</a></td>'
+        +        '<td><a style="cursor:pointer" onClick="downloadFile('+ item.id+')">Tải</a></td>'
+        +        '<td><a style="cursor:pointer" onClick="deleteFile('+ item.id+')">Xóa</a></td>'
         +        '<td><a href="#">Chia sẻ</a></td>'
         +    '</tr>';
     t+=1;
@@ -94,4 +94,16 @@ function downloadFile(id) {
 	}, function(err){
        // Error handle
 	});
+}
+
+function deleteFile(id) {
+    var form_data = {
+        data_id: id
+    };
+    API.send('data', 'delete', form_data, function(res) {
+		// Success reponse handle
+	}, function(err){
+       // Error handle
+	});
+	location.reload(true);
 }

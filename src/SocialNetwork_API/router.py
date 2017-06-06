@@ -10,6 +10,7 @@ router.register(r'user', UserViewSet, base_name="User")
 router.register(r'auth', AuthViewSet, base_name="Auth")
 router.register(r'comment', CommentViewSet, base_name="Comment")
 router.register(r'data', DataViewSet, base_name="Data")
+router.register(r'download', DownloadViewSet, base_name="Data")
 
 urlpatterns = [
     url(r'^', include(router.urls))

@@ -13,16 +13,16 @@ class DownloadViewSet(BaseViewSet):
 
     def list(self, request):
         try:
-            return Response(PostService.get_post_of_user(request.user.id))
+            return Response(DownloadService.get_download_history_of_user(request.user.id))
         except Exception as exception:
             raise exception
 
     def destroy(self, request, pk=None):
         data = self.get_and_check_history(pk)
         user_from = 'sn_users/'+str(request.user.id)
-        if data._from != user_from:
+        if data.get('_from') != user_from:
             raise exceptions.PermissionDenied()
-        PostService.delete_comment(data)
+        DownloadService.delete_history(data=data)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def create(self, request, *args, **kwargs):

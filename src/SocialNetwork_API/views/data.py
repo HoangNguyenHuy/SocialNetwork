@@ -26,7 +26,7 @@ class DataViewSet(BaseViewSet):
             file_data = data.copy()
             if data.pop('user_id') != request.user.id:
                 raise exceptions.PermissionDenied()
-            DataService.delete_data(self,data=file_data)
+            DataService.delete_data(data=file_data)
             return Response(status=status.HTTP_204_NO_CONTENT)
 
         except Exception as exc:

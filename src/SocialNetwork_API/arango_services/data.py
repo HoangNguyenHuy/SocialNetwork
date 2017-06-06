@@ -43,6 +43,7 @@ class ArangoDataService(ArangoBaseService):
         result = ArangoCore.execute_query(query_string, parameter)
         return result
 
+    @classmethod
     def delete_data(cls, data):
         try:
             database = ArangoCore.get_database()

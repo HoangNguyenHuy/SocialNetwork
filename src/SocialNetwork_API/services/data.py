@@ -56,6 +56,7 @@ class DataService(BaseService):
         except Exception as e:
             raise e
 
+    @classmethod
     def delete_data(cls, data):
         try:
             file_name = data.get('name')
@@ -72,7 +73,7 @@ class DataService(BaseService):
 
                 # Delete comment from arangodb
                 if settings.SAVE_TO_ARANGODB:
-                    ArangoDataService.delete_data(cls, data)
+                    ArangoDataService.delete_data( data)
 
                 os.remove(url)
 

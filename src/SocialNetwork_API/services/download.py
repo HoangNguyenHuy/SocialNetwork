@@ -10,15 +10,14 @@ from sncore import settings
 
 class DownloadService(BaseService):
 
-    # @classmethod
-    # def get_download_history(cls, user_id):
-    #     try:
-    #         queryset = Posts.objects.all()
-    #         post = get_object_or_404(queryset, pk=post_id)
-    #         return post
-    #     except Exception as exception:
-    #         # cls.log_exception(exception)  # cái này là cái gì
-    #         return None
+    @classmethod
+    def get_download_history_of_user(cls, user_id):
+        try:
+            abc = ArangoDownloadService.get_download_history_of_user(str(user_id))
+            return abc
+        except Exception as exception:
+            # cls.log_exception(exception)  # cái này là cái gì
+            return None
 
     @classmethod
     def save(cls, data, instance=None):
@@ -73,6 +72,27 @@ class DownloadService(BaseService):
 
         except Exception as e:
             raise e
+
+    @classmethod
+    def delete_history(cls, data):
+        try:
+
+            with transaction.atomic():
+                # Delete comment from mysqldb
+                data_id = data.get('_key')
+                data_id = data_id[data_id.rfind('-')+1:]
+                file_data = Download.objects.filter(id=data_id)
+                file_data.delete()
+
+                # Delete comment from arangodb
+                if settings.SAVE_TO_ARANGODB:
+                    ArangoDownloadService.delete_download_history(data)
+
+                return True
+
+        except Exception as exception:
+            cls.log_exception(exception)
+            raise exception
 
     @classmethod
     def get_download_history(self, download_id):

@@ -82,7 +82,7 @@ function downloadFile(id) {
     var form_data = {
         data_id: id
     };
-    API.send('data/download', 'post', form_data, function(res) {
+    API.send('download', 'post', form_data, function(res) {
 		// Success reponse handle
 		console.log(res);
 		document.getElementById('my_iframe').src = url;

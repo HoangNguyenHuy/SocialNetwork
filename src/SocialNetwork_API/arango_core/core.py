@@ -432,9 +432,9 @@ class ArangoCore(object):
 
     @classmethod
     def add_user_download_to_collection(cls, collection_name, from_collection_name, from_collection_key, to_collection_name,
-                               to_collection_key, transaction=None):
+                               to_collection_key, id_download, transaction=None):
         try:
-            _key = '{0}-{1}-{2}'.format(from_collection_key, to_collection_key, timezone.now().strftime('%H%M%S%f%m%d%Y'))
+            _key = '{0}-{1}-{2}-{3}'.format(from_collection_key, to_collection_key, timezone.now().strftime('%H%M%S%f%m%d%Y'), id_download)
             _from = '{0}/{1}'.format(from_collection_name, from_collection_key)
             _to = '{0}/{1}'.format(to_collection_name, to_collection_key)
             data = {'_key': _key, '_from': _from, '_to': _to,

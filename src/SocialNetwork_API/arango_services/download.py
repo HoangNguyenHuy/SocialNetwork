@@ -9,11 +9,15 @@ class ArangoDownloadService(ArangoBaseService):
     def save_download(cls, data):
         try:
             database = ArangoCore.get_database()
-            collections = [ArangoEdge.USER_DOWNLOAD]
+            collections = [ArangoEdge.USER_DOWNLOAD,ArangoVertex.DOWNLOAD,ArangoEdge.DOWNLOAD_DATA]
             with database.transaction(write=collections, commit_on_error=False) as transaction:
+                # Add post to graph vertex
+                ArangoCore.add_vertex_to_collection(ArangoVertex.DOWNLOAD, data, transaction)
                 # Add user_download to graph edge
-                ArangoCore.add_user_download_to_collection(ArangoEdge.USER_DOWNLOAD, ArangoVertex.USER, data['user_id'],
-                                                  ArangoVertex.DATA, data['data_id'], data['id'], transaction)
+                ArangoCore.add_edge_to_collection(ArangoEdge.USER_DOWNLOAD, ArangoVertex.USER, data['user_id'],
+                                                  ArangoVertex.DOWNLOAD, data['id'], transaction)
+                ArangoCore.add_edge_to_collection(ArangoEdge.DOWNLOAD_DATA, ArangoVertex.DOWNLOAD, data['id'],
+                                                           ArangoVertex.DATA, data['data_id'], transaction)
                 transaction.commit()
             return True
         except Exception as exception:

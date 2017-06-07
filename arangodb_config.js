@@ -37,6 +37,7 @@ function main (argv) {
 	var activitiesCollectionName = "sn_activities";
 	var userNotificationStatusCollectionName = "sn_user_notification";
 	var dataNotificationStatusCollectionName = "sn_data_notification";
+	var downloadCollectionName = "sn_downloads";
 
 	// EDGE COLLECTION
 	var friendCollectionName = "sn_friend";
@@ -48,10 +49,11 @@ function main (argv) {
 	var userDownloadCollectionName = "sn_user_download";
 	var postDataCollectionName = "sn_post_data";
 	var userGroupCollectionName = "sn_user_group";
-	
+	var downloadDataCollectionName = "sn_download_data";
+
 	var vertexCollection = [userCollectionName, postCollectionName, contentCommentCollectionName,
 						   	dataCollectionName, groupCollectionName, activitiesCollectionName, 
-							userNotificationStatusCollectionName, dataNotificationStatusCollectionName,
+							userNotificationStatusCollectionName, dataNotificationStatusCollectionName,downloadCollectionName,
 						   ]
 
 	var edgeCollection = [{'name': friendCollectionName, 'from': userCollectionName, 'to': userCollectionName},
@@ -62,6 +64,7 @@ function main (argv) {
 						 {'name': postCommentCollectionName, 'from': postCollectionName, 'to': contentCommentCollectionName},
 						 {'name': postUserCollectionName, 'from': postCollectionName, 'to': userCollectionName},
 						 {'name': userDownloadCollectionName, 'from': userCollectionName, 'to': dataCollectionName},
+						 {'name': downloadDataCollectionName, 'from': downloadCollectionName, 'to': dataCollectionName},
 						 ]
 
 	//var redundantVertexCollection = []

@@ -18,7 +18,7 @@ class DownloadViewSet(BaseViewSet):
             raise exception
 
     def destroy(self, request, pk=None):
-        data = self.get_and_check_history(pk)
+        data = self.get_and_check_history(str(pk))
         user_from = 'sn_users/'+str(request.user.id)
         if data.get('_from') != user_from:
             raise exceptions.PermissionDenied()

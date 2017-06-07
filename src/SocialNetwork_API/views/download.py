@@ -28,6 +28,7 @@ class DownloadViewSet(BaseViewSet):
     def create(self, request, *args, **kwargs):
         self.get_and_check(request)
         url = DownloadService.download(request)
+        url = url[url.rfind('/src'):]
         return Response(url)
 
     @classmethod

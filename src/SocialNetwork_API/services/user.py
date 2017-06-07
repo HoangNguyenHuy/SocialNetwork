@@ -165,3 +165,14 @@ class UserService(BaseService):
             cls.log_exception(e)
             return None
         return user
+
+    @classmethod
+    def set_new_password(cls, user, password):
+        try:
+            with transaction.atomic():
+                user.set_password(password)
+                user.save()
+
+            return True
+        except Exception as exception:
+            raise exception

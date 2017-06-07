@@ -4,11 +4,14 @@ from rest_framework.decorators import list_route
 from rest_framework.test import APIClient
 
 from SocialNetwork_API import permissions
+from SocialNetwork_API.models import User
 from SocialNetwork_API.exceptions import ServiceException
 from SocialNetwork_API.serializers import FriendSerialiser
 from SocialNetwork_API.services import UserService
 from SocialNetwork_API.views import BaseViewSet
 from sncore import settings
+
+
 
 
 class AdminViewSet(BaseViewSet):
@@ -126,3 +129,16 @@ class AdminViewSet(BaseViewSet):
     #
     #     except Exception as exception:
     #         raise exception
+
+    @list_route(methods=['put'], permission_classes=(permissions.IsAuthenticated,))
+    def reset_password(self, request, *args, **kwargs):
+        try:
+            user_id = request.data.get('user_id', None)
+            user = User.objects.get(pk=user_id)
+            if not user:
+                raise exceptions.ValidationError('user_id is invalid')
+
+            UserService.set_new_password(user, 'abc@123')
+            return Response(status=status.HTTP_200_OK)
+        except Exception as exception:
+            raise exception

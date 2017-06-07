@@ -76,3 +76,27 @@ class UserViewSet(BaseViewSet):
             raise exceptions.NotFound()
 
         return post
+
+    @list_route(methods=['put'], permission_classes=(permissions.IsAuthenticated,))
+    def change_password(self, request, *args, **kwargs):
+        try:
+            status_error = 0
+            password = request.data.get('password', None)
+            confirm_password = request.data.get('confirm_password', None)
+
+            if not password and len(password.strip()) <= 6:
+                status_error = 1
+                raise exceptions.ValidationError('password must be at least 6 characters.')
+
+            if password != confirm_password:
+                status_error = 1
+                raise exceptions.ValidationError('confirm_password is invalid.')
+
+            UserService.set_new_password(request.user, password)
+
+            return Response(status=status.HTTP_200_OK)
+        except Exception as exception:
+            if status_error == 1:
+                raise exception
+            else:
+                raise ServiceException(exception)

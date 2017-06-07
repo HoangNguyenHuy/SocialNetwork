@@ -14,7 +14,7 @@ class ArangoDownloadService(ArangoBaseService):
                 # Add post to graph vertex
                 ArangoCore.add_vertex_to_collection(ArangoVertex.DOWNLOAD, data, transaction)
                 # Add user_download to graph edge
-                ArangoCore.add_edge_to_collection(ArangoEdge.USER_DOWNLOAD, ArangoVertex.USER, data['user_id'],
+                ArangoCore.add_user_download_to_collection(ArangoEdge.USER_DOWNLOAD, ArangoVertex.USER, data['user_id'],
                                                   ArangoVertex.DOWNLOAD, data['id'], transaction)
                 ArangoCore.add_edge_to_collection(ArangoEdge.DOWNLOAD_DATA, ArangoVertex.DOWNLOAD, data['id'],
                                                            ArangoVertex.DATA, data['data_id'], transaction)
@@ -50,9 +50,13 @@ class ArangoDownloadService(ArangoBaseService):
     def get_download_history_of_user(cls, user_id):
         try:
             user_id = 'sn_users/'+user_id
-            query_string = "FOR v,download IN OUTBOUND @user_id sn_user_download " \
-                           "SORT download.created_at DESC " \
-                           "RETURN merge(download,{data:v})"
+            query_string = "LET historys = (FOR v,history IN OUTBOUND @user_id sn_user_download " \
+                           "SORT history.created_at DESC " \
+                           "RETURN merge(history,{infor:v})) " \
+                           "FOR history IN historys " \
+                           "FOR data IN sn_datas " \
+                           "FILTER data.id == history.infor.data_id " \
+                           "RETURN merge(history,{data:data}) "
             parameter = {'user_id': user_id}
             return ArangoCore.execute_query(query_string, parameter)
         except Exception as exception:

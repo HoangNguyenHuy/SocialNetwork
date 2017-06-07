@@ -80,7 +80,6 @@ class DownloadService(BaseService):
             with transaction.atomic():
                 # Delete comment from mysqldb
                 data_id = data.get('_key')
-                data_id = data_id[data_id.rfind('0')+1:]
                 file_data = Download.objects.filter(id=data_id)
                 file_data.delete()
 

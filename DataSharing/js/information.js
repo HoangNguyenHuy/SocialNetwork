@@ -20,7 +20,6 @@ function loadInformationUser(item) {
 		$('#first_name').val(res.first_name);
 		$('#last_name').val(res.last_name);
 		$('#phone').val(res.phone);
-		$('#password').val(res.password);
 		$('#email').val(res.email);
 	}, function(err){
        // Error handle
@@ -29,13 +28,22 @@ function loadInformationUser(item) {
 
 $('#upload_infor').submit(function (e){
     e.preventDefault();
-    var form_data = {
-	    email: document.getElementById("email").value,
-	    dob: document.getElementById("dob").value,
-	    first_name: document.getElementById("first_name").value,
-	    last_name: document.getElementById("last_name").value,
-	    phone: document.getElementById("phone").value,
-	}
+    var form_data ={}
+    if (document.getElementById("email").value){
+        form_data ={email: document.getElementById("email").value,}
+    }
+    if (document.getElementById("dob").value){
+        form_data ={dob: document.getElementById("dob").value,}
+    }
+    if (document.getElementById("first_name").value){
+        form_data ={first_name: document.getElementById("first_name").value,}
+    }
+    if (document.getElementById("last_name").value){
+        form_data ={last_name: document.getElementById("last_name").value,}
+    }
+    if (document.getElementById("phone").value){
+        form_data ={phone: document.getElementById("phone").value,}
+    }
 	API.send('user/'+token.user_id, 'put', form_data, function(res) {
 	    //success
 	    console.log(res);

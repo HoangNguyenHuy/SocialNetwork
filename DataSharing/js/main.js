@@ -100,4 +100,5 @@ function addComment(id_post) {
 	}, function(err){
 		// Error handle
 	});
+	location.reload(true);
 }

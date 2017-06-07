@@ -44,10 +44,42 @@ $('#upload_infor').submit(function (e){
     if (document.getElementById("phone").value){
         form_data ={phone: document.getElementById("phone").value,}
     }
-	API.send('user/'+token.user_id, 'put', form_data, function(res) {
-	    //success
-	    console.log(res);
-	}, function(err){
-        // Error handle
-	});
+    console.log(form_data);
+//	API.send('user/'+token.user_id, 'put', form_data, function(res) {
+//	    //success
+//	    console.log(res);
+//	}, function(err){
+//        // Error handle
+//	});
+})
+
+$('#form_change_pass').submit(function (e){
+    e.preventDefault();
+    var newpass = document.getElementById("passnew").value;
+    var confirm_pass= document.getElementById("passconfirm").value;
+    if (newpass != confirm_pass){
+//        $('#box_passconfirm').append('<img src="image/error.png" style="margin-top:5px;" width="20px" height="20px">');
+            document.getElementById("confirm").innerHTML = '<img src="image/error.png" style="margin-top:5px;" width="20px" height="20px">'
+    }
+    else{
+        document.getElementById("confirm").innerHTML = ''
+        if (ValidCaptcha()==false){document.getElementById("error_message").innerHTML = 'Mã xác nhận không hợp lệ.'}
+        else{
+            document.getElementById("error_message").innerHTML = ''
+            var form_data ={
+        password : newpass,
+        confirm_password : confirm_pass,
+        }
+
+        console.log(form_data);
+        	API.send('user/change_password', 'put', form_data, function(res) {
+        	    //success
+        	}, function(err){
+                // Error handle
+        	});
+        	alert("Đổi mật khẩu thành công !");
+        	location.reload(true);
+        }
+
+    }
 })

@@ -31,6 +31,8 @@ $('#target').submit(function(e) {
 	}, function(err){
 		// Error handle
 	});
+	alert("Post thành công !");
+	location.reload(true);
 });
 
 
@@ -42,10 +44,12 @@ $('#targets').submit(function(e) {
 	API.send('data','post', form_data, function(res) {
 		// Success reponse handle
 //		console.log(res);
-        location.reload(true);
+
 	}, function(err){
 		// Error handle
 	});
+	alert("Upload thành công !");
+	location.reload(true);
 });
 
 

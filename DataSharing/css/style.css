@@ -398,4 +398,5 @@ h3#mainCaptcha{
 button#refresh{
 	width: 40px;
     height: 25px;
+    background-color: lime;
 }
